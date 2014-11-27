@@ -4,36 +4,60 @@ html
     title HackTJ 2.0
 
     meta(http-equiv='content-type', content='text/html; charset=utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
+    meta(name="apple-mobile-web-app-capable" content="yes")
     link(rel='stylesheet', href='/css/main.css', type='text/css')
   body
+    .page
+
+      //- This div scrolls with the page
+      .header.large#header-1(data-bg="photo-1")
+        .logo.giga.weight-light
+          | HackTJ
+          span.num 2.0
+        .h2 Feburary 26-27, 2015
+        .buttons
+          .button.h3 Register
+          .button.h3 Mentor
+          .button.h3 Sponsor
+
+      //- Main section of page
+      .content
+        .container
+          .row.gutters
+            .column-16
+              .h1.weight-light TJ's own hackathon is back.
+              p.large Lorem ipsum Sint tempor aute esse Ut id ullamco officia consectetur elit dolore do incididunt qui non culpa officia esse adipisicing dolore ut ullamco sint ut eiusmod ex sit anim dolor quis deserunt dolore nulla in cupidatat.
+          .row
+            .column-16
+              .line
+                .h2.line-text FAQ
+          .row.gutters.faq
+            .column-16.responsive
+              .h3 Question?
+              p Answer Lorem ipsum Ad enim officia et aliqua Ut officia esse culpa consectetur eu cupidatat in nulla in esse nisi nisi.
+            .column-16.responsive
+              .h3 Question?
+              p Answer Lorem ipsum Ad enim officia et aliqua Ut officia esse culpa consectetur eu cupidatat in nulla in esse nisi nisi.
+            .column-16.responsive
+              .h3 Question?
+              p Answer Lorem ipsum Ad enim officia et aliqua Ut officia esse culpa consectetur eu cupidatat in nulla in esse nisi nisi.
+            .column-16.responsive
+              .h3 Question?
+              p Answer Lorem ipsum Ad enim officia et aliqua Ut officia esse culpa consectetur eu cupidatat in nulla in esse nisi nisi.
+      
+      //- .header#header-2(data-bg="photo-2")
+      //-   .h1 Title Two
+
+      //- .content
+      //-   .container
+      //-   | Lorem ipsum Ex non in id cillum ut dolor tempor in irure culpa exercitation ex amet qui aliqua veniam nulla quis irure consequat tempor incididunt veniam do sint dolore nulla incididunt mollit irure sed commodo labore reprehenderit commodo.
+
     //- Stuff in this div is fixed to the background
-    .cover 
+    .cover.photo-1 
       .photocreds Photo by James Woglom
-    //- This div scrolls with the page
-    .header 
-      .logo.h1 
-        | HackTJ
-        span.num 2.0
-
-    //- Main section of page
-    .content
-      .container
-        .row
-          .h1.column-16 HackTJ is back. And it's going to be bigger and better than ever.
-        .row.gutters
-          .column-5
-            .icon-tools.icon-4x
-            .h3 Build cool stuff
-            .text Lorem ipsum Cupidatat reprehenderit aliqua magna amet fugiat consectetur non sint nulla occaecat ut cillum Duis proident do sit ex proident officia quis Ut in aliquip pariatur non est.
-          .column-6
-            .icon-notebook.icon-4x
-            .h3 Learn something new
-            .text Lorem ipsum Cupidatat reprehenderit aliqua magna amet fugiat consectetur non sint nulla occaecat ut cillum Duis proident do sit ex proident officia quis Ut in aliquip pariatur non est.
-          .column-5
-            .icon-gift.icon-4x
-            .h3 Win prizes
-            .text Lorem ipsum Cupidatat reprehenderit aliqua magna amet fugiat consectetur non sint nulla occaecat ut cillum Duis proident do sit ex proident officia quis Ut in aliquip pariatur non est.
-
-    //- script(src='/js/main.js', type='text/javascript')
+    //- .cover.photo-2 
+    //-   .photocreds Photo by Mayank Jain
+    script(src='/js/jquery.min.js', type="text/javascript")
+    script(src='/js/main.js', type='text/javascript' async)

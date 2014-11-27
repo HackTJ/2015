@@ -1,1 +1,42 @@
-!function(o){function n(o){this.dd=o,this.initEvents()}n.prototype={initEvents:function(){this.dd.on("click",function(n){o(this).toggleClass("dropdown-active"),n.stopPropagation()}),o(".dropdown-hover").mouseenter(function(n){o(this).addClass("dropdown-active"),n.stopPropagation()})}},o(function(){var t=o(".dropdown");new n(t),o(document).click(function(){t.removeClass("dropdown-active")}),o(".dropdown-menu").mouseleave(function(){t.removeClass("dropdown-active")})})}(jQuery);
+(function($){
+  /**
+   * Powers the universal dropdown selector.
+   *
+   * @class DropDown
+   * @param {Object} el jQuery object
+   */
+  function DropDown(el) {
+    this.dd = el;
+    this.initEvents();
+  }
+
+  DropDown.prototype = {
+    initEvents : function() {
+      // Toggle .dropdown-active on click
+      this.dd.on('click', function(event){
+        $(this).toggleClass('dropdown-active');
+        event.stopPropagation();
+      });
+
+      // Toggle .dropdown-active on hover
+      $(".dropdown-hover").mouseenter(function(event) {
+        $(this).addClass("dropdown-active");
+        event.stopPropagation();
+      });
+    }
+  };
+
+  $(function(){
+    var dropdown = $('.dropdown');
+
+    new DropDown(dropdown);
+
+    $(document).click(function() {
+      dropdown.removeClass('dropdown-active');
+    });
+
+    $(".dropdown-menu").mouseleave(function() {
+      dropdown.removeClass("dropdown-active");
+    });
+  });
+}(jQuery));

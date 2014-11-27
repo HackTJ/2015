@@ -26,7 +26,7 @@ gulp.task('html', function() {
 // Copy over js
 gulp.task('js', function(){
     return gulp.src('./js/**')
-        .pipe(minifyJS()) // Only for production
+        // .pipe(minifyJS()) // Only for production
         .pipe(gulp.dest('./out/js'))
 });
 

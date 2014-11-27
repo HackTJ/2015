@@ -3,67 +3,189 @@
 @import "icons/icons";
 @import "icons/helper";
 
-@import url("http://fonts.googleapis.com/css?family=Roboto:400,300");
+@import url("http://fonts.googleapis.com/css?family=Quattrocento|Roboto:300");
 
-html{
-    height: 100%;
-    width: 100%;
-}
 
-body{
-    background: url("../img/cover.jpg") no-repeat top center fixed;
-    background-size: contain;
-}
+// Variables
 
-.h1, .h2, .h3, .h4, .h5, .h6 {
-   font-family: "Roboto", "Helvetica Neue", sans-serif;
-   font-weight: 300; 
-}
+$red: rgb(234, 92, 92);
 
 .cover{
-    height: 475px;
+    height: 100%;
     width: 100%;
     position: fixed;
-    right: 0px;
-    top: 1px;
-    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 0;
     color: white;
+
+    
+    background-repeat: no-repeat;   
+    background-size: cover;
+    background-position: top center;
+
+
+    opacity: 0;
+
+    &.photo-1{
+        background-image: url("../img/cover-gradient.jpg");
+    }
+    &.photo-2{
+        background-image: url("../img/cover1.jpg");
+    }
+
     .photocreds{
         display: block;
         position: absolute;
         bottom: 0;
         right: 0;
-        font-size: 10px;
+        font-size: 0.5rem;
         margin: 5px;
     }
 }
 
 .header{
-    height: 475px;
+    min-height: 250px;
     width: 100%;
     margin: 0;
     padding: 0;
     text-align: center;
-    font-size: 100px;
-    .logo.h1{
+    position: relative;
+    z-index: 2;
+    color: white;
+    &.large{
+        height: 85vh;
+    }
+    .logo{
         display: inline-block;
         margin: auto;
         margin-top: 75px;
-        font-size: 100px;
         color: white;
+        z-index: 6;
+    
         .num{
-            color: black;
+            color: $red;
         }
     }
 }
 
 .content{
     @include box-shadow(0px -5px 15px rgba(30, 30, 30, 0.8));
-    min-height: 100%;
+    min-height: 110vh;
     background: white;
     margin: 0;
     text-align: center;
     position: relative;
     padding-top: 25px;
+    padding-bottom: 50px;
     z-index: 2;
 }
+
+.button{
+    position: relative;
+    display: inline-block;
+
+    color: inherit;
+    background: none;
+    text-transform: uppercase;
+    outline: none;
+
+    cursor: pointer;
+    padding: 25px 45px;
+    margin: 15px 30px;
+    
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+
+    border: 3px solid #fff;
+    color: #fff;
+
+    overflow: hidden;
+
+    &:after{
+       content: '';
+       position: absolute;
+
+       z-index: -1;
+       -webkit-transition: all 0.3s;
+       -moz-transition: all 0.3s;
+       transition: all 0.3s; 
+
+       height: 0;
+       width: 103%;
+       top: 50%;
+       left: 50%;
+       background: #fff;
+       opacity: 0;
+
+       -webkit-transform: translateX(-50%) translateY(-50%);
+       -moz-transform: translateX(-50%) translateY(-50%);
+       -ms-transform: translateX(-50%) translateY(-50%);
+       transform: translateX(-50%) translateY(-50%);
+    }
+
+    &:hover{
+        color: $red;
+        &:after{
+            height: 85%;
+            opacity: 1;
+        }
+    }
+    &:active{
+        &:after{
+            height: 101%;
+            opacity: 1;
+        }
+    }
+}
+
+p{
+    max-width: 800px;
+    margin: auto;
+    &.large{
+        font-size: 1.2rem;
+    }
+}
+
+.line {
+    text-align: center;
+    position: relative;
+    .line-text {
+        display: inline-block;
+        &:before, &:after {
+            border-top: 1px solid black;
+            display: block;
+            height: 1px;
+            content: " ";
+            width: 45%;
+            position: absolute;
+            left: 0;
+            top: 1em;
+        }
+        &:after {
+           right: 0;  
+           left: auto; 
+        }  
+    }
+}
+
+.row.faq [class*='column-'].responsive{
+    margin-bottom: 3%;
+    @include breakpoint(small) { 
+        width: 48%;
+        &:nth-of-type(odd){
+            margin-left: 0;
+        }
+    }
+    @include breakpoint(large) {
+        width: 23.5%;
+        &:nth-of-type(odd):not(:first-of-type){
+            margin-left: 2%;
+        }
+    }
+}
+

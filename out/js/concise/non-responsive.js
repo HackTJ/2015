@@ -1,1 +1,51 @@
-!function(n){n.fn.calculateWidth=function(){return n(this).width()},n.fn.nonResponsive=function(){this.each(function(){if(n(this).hasClass("non-responsive")){var t=(n(".container").width(),1),s=24;if(n(this).hasClass("gutters"))for(;s>=t;t++){var i=n(".column-"+t).calculateWidth(),e=.02*i;n(".gutters .column-"+t).css("width",i-e+"px")}else for(;s>=t;t++){var i=n(".column-"+t).calculateWidth()-1;n(".column-"+t).css("width",i+"px")}}})}}(jQuery),jQuery(document).ready(function(){jQuery("body, .row").nonResponsive()});
+(function($){
+  /**
+   * Calculate object width
+   *
+   */
+  $.fn.calculateWidth = function() {
+    return $(this).width();
+  };
+
+  /**
+   * Calculates proper widths for non-responsive websites.
+   *
+   * @method nonResponsive
+   * @note Only necessary for non-responsive websites.
+   */
+  $.fn.nonResponsive = function() {
+
+    // Loop through each instance of the `.non-responsive` class
+    this.each(function(index) {
+      if ($(this).hasClass("non-responsive")) {
+        // Get container width
+        var containerWidth = $(".container").width(),
+        i = 1,
+        max = 24;
+
+        // Set pixel-based alternatives for grid styles
+        // But first we need to know if our row has class `gutters`
+        if($(this).hasClass("gutters")) {
+          for (; i <= max; i++ ) {
+            // Column width for row with gutters
+            var columnWidth = ($('.column-'+i).calculateWidth()),
+            gutterWidth = columnWidth * 0.02;
+
+            $('.gutters .column-'+i).css("width", columnWidth - gutterWidth + "px");
+          }
+        } else {
+          for (; i <= max ; i++ ) {
+            // Column width for normal row
+            var columnWidth = ($('.column-'+i).calculateWidth() - 1);
+
+            $('.column-'+i).css("width", columnWidth + "px");
+          }
+        }
+      }
+    });
+  };
+}(jQuery));
+
+jQuery(document).ready(function() {
+  jQuery("body, .row").nonResponsive();
+});

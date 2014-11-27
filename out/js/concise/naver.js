@@ -1,1 +1,358 @@
-!function(a,n){"use strict";function e(n){n=a.extend(!0,{},d,n);for(var e=a(this),r=0,o=e.length;o>r;r++)t(e.eq(r),n);return e}function t(e,t){if(!e.data("naver")){t=a.extend(!0,{},t,e.data("naver-options"));var o=e.find(".naver-handle").length?e.find(".naver-handle").detach():a('<span class="naver-handle"></span>');e.addClass("naver "+t.customClass).wrapInner('<div class="naver-container"></div>').wrapInner('<div class="naver-wrapper"></div>').prepend(o);var l=a.extend(!0,{$nav:e,$container:e.find(".naver-container"),$wrapper:e.find(".naver-wrapper"),$handle:e.find(".naver-handle")},t);l.$handle.text(t.label?t.labels.closed:""),l.$nav.on("touchstart.naver",".naver-handle",l,r).on("click.naver",".naver-handle",l,s).data("naver",l),void 0!==n.matchMedia&&(l.mediaQuery=n.matchMedia("(max-width:"+(1/0===l.maxWidth?"100000px":l.maxWidth)+")"),l.mediaQuery.addListener(function(){v.apply(l.$nav)}),v.apply(l.$nav))}}function r(a){a.stopPropagation();var n=a.data,e=a.originalEvent;c(n.timer),n.touchStartX=e.touches[0].clientX,n.touchStartY=e.touches[0].clientY,n.$nav.on("touchmove.naver",".naver-handle",n,o).on("touchend.naver",".naver-handle",n,l)}function o(a){var n=a.data,e=a.originalEvent;(Math.abs(e.touches[0].clientX-n.touchStartX)>10||Math.abs(e.touches[0].clientY-n.touchStartY)>10)&&n.$nav.off("touchmove.naver touchend.naver")}function l(a){a.preventDefault(),a.stopPropagation();var n=a.data;n.$nav.off("touchmove.naver touchend.naver click.naver"),n.timer=i(n.timer,1e3,function(){n.$nav.on("click.naver",".naver-handle",n,s)}),s(a)}function s(n){n.preventDefault(),n.stopPropagation();var e=(a(n.currentTarget),n.data);a(".naver").not(e.$nav).naver("close"),e.$nav.hasClass("open")?u.close.apply(e.$nav):u.open.apply(e.$nav)}function v(){var n=a(this).data("naver");n.mediaQuery.matches?u.enable.apply(n.$nav):u.disable.apply(n.$nav)}function i(a,n,e,t){return c(a,t),t===!0?setInterval(e,n):setTimeout(e,n)}function c(a){null!==a&&(clearInterval(a),a=null)}var d={customClass:"",label:!0,labels:{closed:"Navigation",open:"Close"},maxWidth:"980px"},u={close:function(){return a(this).each(function(n,e){var t=a(e).data("naver");t&&t.$nav.hasClass("enabled")&&(t.$wrapper.css({height:0}),t.label&&t.$handle.html(t.labels.closed),t.$nav.removeClass("open").trigger("close.naver"))})},defaults:function(n){return d=a.extend(!0,d,n||{}),a(this)},disable:function(){return a(this).each(function(n,e){var t=a(e).data("naver");t&&(t.$nav.removeClass("enabled"),t.$wrapper.css({height:""}))})},destroy:function(){return a(this).each(function(n,e){var t=a(e).data("naver");t&&(t.$handle.remove(),t.$container.contents().unwrap().unwrap(),t.$nav.removeClass("enabled disabled naver "+t.customClass).off(".naver").removeData("naver"))})},enable:function(){return a(this).each(function(n,e){var t=a(e).data("naver");t&&(t.$nav.addClass("enabled"),u.close.apply(t.$nav))})},open:function(){return a(this).each(function(n,e){var t=a(e).data("naver");t&&t.$nav.hasClass("enabled")&&(t.$wrapper.css({height:t.$container.outerHeight(!0)}),t.label&&t.$handle.html(t.labels.open),t.$nav.addClass("open").trigger("open.naver"))})}};a.fn.naver=function(a){return u[a]?u[a].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof a&&a?this:e.apply(this,arguments)},a.naver=function(a){"defaults"===a&&u.defaults.apply(this,Array.prototype.slice.call(arguments,1))}}(jQuery,window);
+/*
+ * Naver v3.0.8 - 2014-05-06
+ * A jQuery plugin for responsive navigation. Part of the Formstone Library.
+ * http://formstone.it/naver/
+ *
+ * Copyright 2014 Ben Plum; MIT Licensed
+ */
+
+;(function ($, window) {
+  "use strict";
+
+  /**
+   * @options
+   * @param customClass [string] <''> "Class applied to instance"
+   * @param label [boolean] <true> "Display handle width label"
+   * @param labels.closed [string] <'Navigation'> "Closed state text"
+   * @param labels.open [string] <'Close'> "Open state text"
+   * @param maxWidth [string] <'980px'> "Width at which to auto-disable plugin"
+   */
+  var options = {
+    customClass: "",
+    label: true,
+    labels: {
+      closed: "Navigation",
+      open: "Close"
+    },
+    maxWidth: "980px"
+  };
+
+  /**
+   * @events
+   * @event open.naver "Navigation opened"
+   * @event close.naver "Navigation closed"
+   */
+
+  var pub = {
+
+    /**
+     * @method
+     * @name close
+     * @description Closes instance
+     * @example $(".target").naver("close");
+     */
+    close: function(e) {
+      return $(this).each(function(i, nav) {
+        var data = $(nav).data("naver");
+
+        if (data && data.$nav.hasClass("enabled")) {
+          data.$wrapper.css({
+            height: 0
+          });
+          if (data.label) {
+            data.$handle.html(data.labels.closed);
+          }
+          data.$nav.removeClass("open")
+               .trigger("close.naver");
+        }
+      });
+    },
+
+    /**
+     * @method
+     * @name defaults
+     * @description Sets default plugin options
+     * @param opts [object] <{}> "Options object"
+     * @example $.naver("defaults", opts);
+     */
+    defaults: function(opts) {
+      options = $.extend(true, options, opts || {});
+      return $(this);
+    },
+
+    /**
+     * @method
+     * @name disable
+     * @description Disables instance
+     * @example $(".target").naver("disable");
+     */
+    disable: function() {
+      return $(this).each(function(i, nav) {
+        var data = $(nav).data("naver");
+
+        if (data) {
+          data.$nav.removeClass("enabled");
+          data.$wrapper.css({ height: "" });
+        }
+      });
+    },
+
+    /**
+     * @method
+     * @name destroy
+     * @description Destroys instance
+     * @example $(".target").naver("destroy");
+     */
+    destroy: function() {
+      return $(this).each(function(i, nav) {
+        var data = $(nav).data("naver");
+
+        if (data) {
+          data.$handle.remove();
+          data.$container.contents()
+                   .unwrap()
+                   .unwrap();
+
+          data.$nav.removeClass("enabled disabled naver " + data.customClass)
+               .off(".naver")
+               .removeData("naver");
+        }
+      });
+    },
+
+    /**
+     * @method
+     * @name enable
+     * @description Enables instance
+     * @example $(".target").naver("enable");
+     */
+    enable: function() {
+      return $(this).each(function(i, nav) {
+        var data = $(nav).data("naver");
+
+        if (data) {
+          data.$nav.addClass("enabled");
+          pub.close.apply(data.$nav);
+        }
+      });
+    },
+
+    /**
+     * @method
+     * @name open
+     * @description Opens instance
+     * @example $(".target").naver("open");
+     */
+    open: function() {
+      return $(this).each(function(i, nav) {
+        var data = $(nav).data("naver");
+
+        if (data && data.$nav.hasClass("enabled")) {
+          data.$wrapper.css({
+            height: data.$container.outerHeight(true)
+          });
+          if (data.label) {
+            data.$handle.html(data.labels.open);
+          }
+          data.$nav.addClass("open")
+               .trigger("open.naver");
+        }
+      });
+    }
+  };
+
+  /**
+   * @method private
+   * @name _init
+   * @description Initializes plugin
+   * @param opts [object] "Initialization options"
+   */
+  function _init(opts) {
+    // Settings
+    opts = $.extend(true, {}, options, opts);
+
+    // Apply to each element
+    var $items = $(this);
+    for (var i = 0, count = $items.length; i < count; i++) {
+      _build($items.eq(i), opts);
+    }
+    return $items;
+  }
+
+  /**
+   * @method private
+   * @name _build
+   * @description Builds each instance
+   * @param $nav [jQuery object] "Target jQuery object"
+   * @param opts [object] <{}> "Options object"
+   */
+  function _build($nav, opts) {
+    if (!$nav.data("naver")) {
+      // Extend Options
+      opts = $.extend(true, {}, opts, $nav.data("naver-options"));
+
+      var $handle = $nav.find(".naver-handle").length ? $nav.find(".naver-handle").detach() : $('<span class="naver-handle"></span>');
+
+      $nav.addClass("naver " + opts.customClass)
+        .wrapInner('<div class="naver-container"></div>')
+        .wrapInner('<div class="naver-wrapper"></div>')
+        .prepend($handle);
+
+      var data = $.extend(true, {
+        $nav: $nav,
+        $container: $nav.find(".naver-container"),
+        $wrapper: $nav.find(".naver-wrapper"),
+        $handle: $nav.find(".naver-handle")
+      }, opts);
+
+      data.$handle.text((opts.label) ? opts.labels.closed : '');
+      data.$nav.on("touchstart.naver", ".naver-handle", data, _onTouchStart)
+           .on("click.naver", ".naver-handle", data, _onClick)
+           .data("naver", data);
+
+
+      // Navtive MQ Support
+      if (window.matchMedia !== undefined) {
+        data.mediaQuery = window.matchMedia("(max-width:" + (data.maxWidth === Infinity ? "100000px" : data.maxWidth) + ")");
+        // Make sure we stay in context
+        data.mediaQuery.addListener(function() {
+          _onRespond.apply(data.$nav);
+        });
+        _onRespond.apply(data.$nav);
+      }
+    }
+  }
+
+  /**
+   * @method private
+   * @name _onTouchStart
+   * @description Handles touchstart to selected item
+   * @param e [object] "Event data"
+   */
+  function _onTouchStart(e) {
+    e.stopPropagation();
+
+    var data = e.data,
+      oe = e.originalEvent;
+
+    _clearTimer(data.timer);
+
+    data.touchStartX = oe.touches[0].clientX;
+    data.touchStartY = oe.touches[0].clientY;
+
+    data.$nav.on("touchmove.naver", ".naver-handle", data, _onTouchMove)
+         .on("touchend.naver", ".naver-handle", data, _onTouchEnd);
+  }
+
+  /**
+   * @method private
+   * @name _onTouchMove
+   * @description Handles touchmove to selected item
+   * @param e [object] "Event data"
+   */
+  function _onTouchMove(e) {
+    var data = e.data,
+      oe = e.originalEvent;
+
+    if (Math.abs(oe.touches[0].clientX - data.touchStartX) > 10 || Math.abs(oe.touches[0].clientY - data.touchStartY) > 10) {
+      data.$nav.off("touchmove.naver touchend.naver");
+    }
+  }
+
+  /**
+   * @method private
+   * @name _onTouchEnd
+   * @description Handles touchend to selected item
+   * @param e [object] "Event data"
+   */
+  function _onTouchEnd(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var data = e.data;
+
+    data.$nav.off("touchmove.naver touchend.naver click.naver");
+
+    // prevent ghosty clicks
+    data.timer = _startTimer(data.timer, 1000, function() {
+      data.$nav.on("click.naver", ".naver-handle", data, _onClick);
+    });
+
+    _onClick(e);
+  }
+
+  /**
+   * @method private
+   * @name _onClick
+   * @description Handles click nav click
+   * @param e [object] "Event data"
+   */
+  function _onClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var $target = $(e.currentTarget),
+      data = e.data;
+
+    // Close other open instances
+    $(".naver").not(data.$nav)
+           .naver("close");
+
+    if (data.$nav.hasClass("open")) {
+      pub.close.apply(data.$nav);
+    } else {
+      pub.open.apply(data.$nav);
+    }
+  }
+
+  /**
+   * @method private
+   * @name _onRespond
+   * @description Handles media query match change
+   */
+  function _onRespond() {
+    var data = $(this).data("naver");
+
+    if (data.mediaQuery.matches) {
+      pub.enable.apply(data.$nav);
+    } else {
+      pub.disable.apply(data.$nav);
+    }
+  }
+
+  /**
+   * @method private
+   * @name _startTimer
+   * @description Starts an internal timer
+   * @param timer [int] "Timer ID"
+   * @param time [int] "Time until execution"
+   * @param callback [int] "Function to execute"
+   * @param interval [boolean] "Flag for recurring interval"
+   */
+  function _startTimer(timer, time, func, interval) {
+    _clearTimer(timer, interval);
+    if (interval === true) {
+      return setInterval(func, time);
+    } else {
+      return setTimeout(func, time);
+    }
+  }
+
+  /**
+   * @method private
+   * @name _clearTimer
+   * @description Clears an internal timer
+   * @param timer [int] "Timer ID"
+   */
+  function _clearTimer(timer) {
+    if (timer !== null) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  $.fn.naver = function(method) {
+    if (pub[method]) {
+      return pub[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return _init.apply(this, arguments);
+    }
+    return this;
+  };
+
+  $.naver = function(method) {
+    if (method === "defaults") {
+      pub.defaults.apply(this, Array.prototype.slice.call(arguments, 1));
+    }
+  };
+})(jQuery, window);
