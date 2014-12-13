@@ -7,6 +7,8 @@ var minifyJS = require('gulp-uglify')
 var deploy = require("gulp-gh-pages");
 var static = require('node-static');
 
+var concat = require('gulp-concat');
+
 // compile CSS
 gulp.task('css', function () {
     return gulp.src('./scss/[!_]*.scss')
@@ -25,8 +27,8 @@ gulp.task('html', function() {
 
 // Copy over js
 gulp.task('js', function(){
-    return gulp.src('./js/**')
-        // .pipe(minifyJS()) // Only for production
+    return gulp.src(['./js/_*.js', './js/*.js'])
+        .pipe(concat('main.js'))
         .pipe(gulp.dest('./out/js'))
 });
 
