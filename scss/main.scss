@@ -7,8 +7,18 @@
 
 
 // Variables
+$red: #ea5c5c;
+$dark-gray: #6f8483;
+$light-gray: #d7dae5;
+$blue: #114b5f;
+$green: #1a936f;
 
-$red: rgb(234, 92, 92);
+::selection {
+  background: rgba(234, 92, 92, 0.3); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: rgba(234, 92, 92, 0.3); /* Gecko Browsers */
+}
 
 .cover{
     height: 100%;
@@ -24,26 +34,33 @@ $red: rgb(234, 92, 92);
 
     
     background-repeat: no-repeat;   
-    background-size: cover;
     background-position: top center;
 
-
-    opacity: 0;
+    transition: height 0s;
+    // opacity: 0;
 
     &.photo-1{
-        background-image: url("../img/cover-gradient.jpg");
+        background-image: url("../img/tj.jpg");
     }
     &.photo-2{
-        background-image: url("../img/cover1.jpg");
+        background-image: url("../img/schedule.jpg");
+    }
+    &.photo-3{
+        background-image: url("../img/sponsors.jpg");
+    }
+    &.photo-4{
+        background-image: url("../img/schedule.jpg");
     }
 
     .photocreds{
         display: block;
         position: absolute;
-        bottom: 0;
+        top: 81vh;
         right: 0;
-        font-size: 0.5rem;
         margin: 5px;
+        color: white;
+        font-size: 0.7rem;
+        font-family: $base-heading-font-family;
     }
 }
 
@@ -56,6 +73,15 @@ $red: rgb(234, 92, 92);
     position: relative;
     z-index: 2;
     color: white;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+
     &.large{
         height: 85vh;
     }
@@ -70,11 +96,16 @@ $red: rgb(234, 92, 92);
             color: $red;
         }
     }
+    .header-text{
+        color: white;
+        font-size: 4rem;
+        padding-top: 100px;
+    }
 }
 
 .content{
-    @include box-shadow(0px -5px 15px rgba(30, 30, 30, 0.8));
-    min-height: 110vh;
+    @include box-shadow(0px -5px 20px rgba(30, 30, 30, 0.8));
+    min-height: 55vh;
     background: white;
     margin: 0;
     text-align: center;
@@ -136,9 +167,20 @@ $red: rgb(234, 92, 92);
         }
     }
     &:active{
+        color: $red;
         &:after{
             height: 101%;
             opacity: 1;
+        }
+    }
+    &.red{
+        color: $red;
+        border-color: $red;
+        &:after{
+            background: $red;
+        }
+        &:hover, &:active{
+            color: #fff;
         }
     }
 }
@@ -164,7 +206,7 @@ p{
             width: 45%;
             position: absolute;
             left: 0;
-            top: 1em;
+            top: 0.8em;
         }
         &:after {
            right: 0;  
@@ -187,5 +229,49 @@ p{
             margin-left: 2%;
         }
     }
+}
+
+.schedule-container{
+    position: relative;
+    height: 500px;
+    margin: 25px;
+    
+    @include breakpoint(small){ 
+        &:after {
+          position: absolute;
+          left: 20%;
+          top: -15px;
+          content: ' ';
+          display: block;
+          width: 2px;
+          height: 100%;
+          margin-left: -3px;
+          background: map-get($bg-colors, black);
+        }
+    }
+
+    .day{
+        width: 100%;
+        margin: auto;
+        display: block;
+        background: white;
+        z-index: 4;
+        color: $red;
+    }
+    .item{
+        height: 100px;
+        .time{
+            position: relative;
+            top: 6px;
+            left: -30px;
+            font-size: 20px;
+        }
+        .description{
+            // @include box-shadow(0px 1px 10px rgba(30, 30, 30, 0.8));
+            text-align: left;
+            font-size: 25px;
+        }
+    }
+
 }
 
