@@ -24,26 +24,6 @@
 }());
 
 jQuery(function($){
-
-	// $('.photo-1').css('opacity', '1');
-	
-	// var current;
-
-	// function switchBackground(num){
-	// 	if(current == num || $('.photo-'+num).length==0) return;
-	// 	console.log("switching from", current, "to", num)
-	// 	$('.photo-'+current).css('opacity', '0');
-	// 	$('.photo-'+num).css('opacity', 1);
-
-	// 	current = num;
-	// }
-
-	// var bottoms = [0];
-	// $('.header').each(function(index, h){
-	// 	bottoms.push($(h).offset().top + $(h).height())
-	// });
-	// console.log(bottoms)
-
 	var sections = [];
 	$('.header').each(function(index, h){
 		var section = {};

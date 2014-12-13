@@ -317,12 +317,25 @@ p{
         }
     }
 }
+.sponsor-container{
+    margin: 2rem;
+    text-align: center;
+    img.sponsor{
+        width: 300px;
+        display: inline;
+    }
+}
+.faq-head{
+    margin-top: 1rem;
+}
 
 .faq{
     .question{
         margin-bottom: 0.25rem;
         font-size: 1.5rem;
-        margin-top: 2rem;
+    }
+    .answer{
+        margin-bottom: 1.5rem;
     }
 }
 

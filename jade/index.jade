@@ -12,11 +12,11 @@ html
     .page
 
       //- This div scrolls with the page
-      .header.large#header-1(data-bg="photo-1")
+      .header.large#top(data-bg="photo-1")
         .logo.giga.weight-light
           | HackTJ
           span.num 2.0
-        .h2 Feburary 26-27, 2015
+        .h2 Feburary 14-15, 2015
         .buttons
           a.button.h3(href="" target="_blank" onclick="return false;") Register
           a.button.h3(href="" target="_blank" onclick="return false;") Mentor
@@ -29,39 +29,51 @@ html
             .column-16
               .h1.weight-light TJ's own hackathon is back.
               p.large Ever wanted to build the next Snapchat? Program a drone? Build a website to connect people across the globe? Come to HackTJ and work with your friends to build something cool, learn a lot, and have a great time in the process.
-          .row
+          .row.faq-head
             .column-16
               .line
                 .h2.weight-light.line-text FAQ
           .row.gutters.faq
             .column-4.responsive
-              .h3.question What is HackTJ?
-              p.answer [ Fill in answer here ] Lorem ipsum Eu consectetur Duis Duis labore mollit quis anim non labore ex irure.
+              .h3.question What is a HackTJ?
+              p.answer HackTJ is TJ's student hackathon, a weekend where you can learn how to code and work with your friends to build any mobile or web app. 
             .column-4.responsive
               .h3.question When is HackTJ?
-              p.answer [ Fill in answer here ] Lorem ipsum Eu consectetur Duis Duis labore mollit quis anim non labore ex irure.
+              p.answer HackTJ will start on Saturday, Feburary 14 at 4:00pm and run until Sunday, Feburary 15 at 5:00pm. If you need to arrive late or leave early, please <a href="mailto:example@example.com">let us know</a> ahead of time.
             .column-4.responsive
               .h3.question Who can attend?
-              p.answer [ Fill in answer here ] Lorem ipsum Eu consectetur Duis Duis labore mollit quis anim non labore ex irure.
+              p.answer HackTJ is open to any and all current TJ students. If you're not a TJ student but would like to attend, consider coming <a href="" onclick="return false;">as a mentor</a>.
             .column-4.responsive
               .h3.question How much will it cost?
-              p.answer [ Fill in answer here ] Lorem ipsum Eu consectetur Duis Duis labore mollit quis anim non labore ex irure.
+              p.answer HackTJ is completely free for all students, thanks to our <a href="#sponsors">generous sponsors</a>.
+          
           .row.gutters.faq
             .column-4.responsive
               .h3.question Who will be there?
-              p.answer [ Fill in answer here ] Lorem ipsum Eu consectetur Duis Duis labore mollit quis anim non labore ex irure.
+              p.answer You can expect to find every type of person at HackTJ, with interests ranging from Art to Chemistry to CS. HackTJ is for everyone, so we know you'll fit right in.
             .column-4.responsive
               .h3.question What should I bring?
-              p.answer [ Fill in answer here ] Lorem ipsum Eu consectetur Duis Duis labore mollit quis anim non labore ex irure.
+              p.answer You'll need to bring your laptop, phone, chargers, a sleeping bag/pillow, toiletries, and a handful of changes of clothes. We suggest you bring one set of nicer clothes for demos, to make the best impression.
+            .column-4.responsive
+              .h3.question Do I need to pick a team?
+              p.answer If you already know who you want to work with, that's awesome - just meet up at the hackathon. If you don't, don't worry because at HackTJ we'll have an opportunity for people to join a team if they need one.
+            .column-4.responsive
+              .h3.question What if I don't know how to code?
+              p.answer Come to HackTJ! Coding is fun, creative, and an important skill, and HackTJ is the perfect way to learn. We'll have workshops and mentors to help guide you along, and you won't be left behind.
+
+          .row.gutters.faq
+            .column-4.responsive
+              .h3.question Will there be food?
+              p.answer Yes. Lots and lots of food.
             .column-4.responsive
               .h3.question What if I have dietary concerns?
-              p.answer [ Fill in answer here ] Lorem ipsum Eu consectetur Duis Duis labore mollit quis anim non labore ex irure.
+              p.answer We'll be providing meals for most everyone at HackTJ, but if you have special concerns please <a href="mailto:example@example.com">let us know</a> and we'll help you out.
             .column-4.responsive
               .h3.question What if my question isn't here?
-              p.answer [ Fill in answer here ] Lorem ipsum Eu consectetur Duis Duis labore mollit quis anim non labore ex irure.
+              p.answer We want to answer it for you! Just send us a quick email at <a href="mailto:example@example.com">example@example.com</a> and we'll get back to you shortly.
 
 
-      .header#header-2(data-bg="photo-2")
+      .header#schedule(data-bg="photo-2")
         .mega.header-text.weight-light Schedule
 
       .content
@@ -69,20 +81,23 @@ html
           .row
             .column-8
               .row.gutter
-                .column-16.h1.day Saturday, January 30
+                .column-16.h1.day Saturday, Feburary 14
               .schedule-container
                 .item
-                  .h3.time 9:00 AM
+                  .h3.time 4:00 PM
                   .description Registration Opens
                 .item
-                  .h3.time 11:00 AM
-                  .description Registration Opens
+                  .h3.time 4:30 PM
+                  .description Opening Ceremony
                 .item
                   .h3.time 5:00 PM
-                  .description Registration Opens
+                  .description Hacking Begins
                 .item
-                  .h3.time 12:00 AM
-                  .description Registration Opens
+                  .h3.time 6:30 PM
+                  .description Dinner
+                .item
+                  .h3.time 11:00 PM
+                  .description Late-night snack
             .column-8
               .row
                 .column-16.h1.day Sunday, January 31
@@ -92,24 +107,32 @@ html
                   .description Breakfast
                 .item
                   .h3.time 12:00 PM
-                  .description Hacking ends
-                .item
-                  .h3.time 1:00 PM
-                  .description Demos start
+                  .description Lunch
                 .item
                   .h3.time 3:00 PM
+                  .description Hacking Ends
+                .item
+                  .h3.time 3:30 PM
+                  .description Demos start
+                .item
+                  .h3.time 4:30 PM
+                  .description Presentations &amp; Final Ceremony
+                .item
+                  .h3.time 5:00 PM
                   .description End of HackTJ
             
-      .header#header-3(data-bg="photo-3")
+      .header#sponsors(data-bg="photo-3")
         .mega.header-text.weight-light Sponsors
 
       .content
         .container
-          p.large.editable HackTJ wouldn't possible without our awesome sponsors. [sponsor text here]
+          p.large.editable HackTJ wouldn't possible without our awesome sponsors.
+          .sponsor-container
+            img.sponsor(src="img/clc.png")
           p
             a.button.h3.red(href="" target="_blank" onclick="return false;") Want to sponsor?
 
-      .header#header-3(data-bg="photo-4")
+      .header#contact(data-bg="photo-4")
         .mega.header-text.weight-light Contact Us
 
       .content
