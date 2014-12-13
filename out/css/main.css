@@ -2315,6 +2315,9 @@ img.full-width {
   background: rgba(234, 92, 92, 0.3);
   /* Gecko Browsers */ }
 
+a, a:hover, a:visited {
+  color: #ea5c5c; }
+
 .cover {
   height: 100%;
   width: 100%;
@@ -2329,13 +2332,25 @@ img.full-width {
   background-position: top center;
   transition: height 0s; }
   .cover.photo-1 {
-    background-image: url("../img/tj.jpg"); }
+    background-image: url("../img/tj-small.jpg"); }
+    @media (min-width: 60em) {
+      .cover.photo-1 {
+        background-image: url("../img/tj-large.jpg"); } }
   .cover.photo-2 {
-    background-image: url("../img/schedule.jpg"); }
+    background-image: url("../img/schedule-small.jpg"); }
+    @media (min-width: 60em) {
+      .cover.photo-2 {
+        background-image: url("../img/schedule-large.jpg"); } }
   .cover.photo-3 {
-    background-image: url("../img/sponsors.jpg"); }
+    background-image: url("../img/sponsors-small.jpg"); }
+    @media (min-width: 60em) {
+      .cover.photo-3 {
+        background-image: url("../img/sponsors-large.jpg"); } }
   .cover.photo-4 {
-    background-image: url("../img/schedule.jpg"); }
+    background-image: url("../img/schedule-small.jpg"); }
+    @media (min-width: 60em) {
+      .cover.photo-4 {
+        background-image: url("../img/schedule-large.jpg"); } }
   .cover .photocreds {
     display: block;
     position: absolute;
@@ -2368,18 +2383,22 @@ img.full-width {
     margin: auto;
     margin-top: 75px;
     color: white;
-    z-index: 6; }
+    z-index: 6;
+    font-size: 4.5rem; }
     .header .logo .num {
       color: #ea5c5c; }
+    @media (min-width: 60em) {
+      .header .logo {
+        font-size: 6rem; } }
   .header .header-text {
     color: white;
     font-size: 4rem;
     padding-top: 100px; }
 
 .content {
-  -moz-box-shadow: 0px -5px 20px rgba(30, 30, 30, 0.8);
-  -webkit-box-shadow: 0px -5px 20px rgba(30, 30, 30, 0.8);
-  box-shadow: 0px -5px 20px rgba(30, 30, 30, 0.8);
+  -moz-box-shadow: 0px 0px 25px rgba(30, 30, 30, 0.8);
+  -webkit-box-shadow: 0px 0px 25px rgba(30, 30, 30, 0.8);
+  box-shadow: 0px 0px 25px rgba(30, 30, 30, 0.8);
   min-height: 55vh;
   background: white;
   margin: 0;
@@ -2395,6 +2414,7 @@ img.full-width {
   color: inherit;
   background: none;
   text-transform: uppercase;
+  text-decoration: none;
   outline: none;
   cursor: pointer;
   padding: 25px 45px;
@@ -2404,7 +2424,10 @@ img.full-width {
   transition: all 0.3s;
   border: 3px solid #fff;
   color: #fff;
-  overflow: hidden; }
+  overflow: hidden;
+  min-width: 210px; }
+  .button:visited {
+    color: #fff; }
   .button:after {
     content: '';
     position: absolute;
@@ -2422,16 +2445,18 @@ img.full-width {
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%); }
-  .button:hover {
-    color: #ea5c5c; }
-    .button:hover:after {
-      height: 85%;
-      opacity: 1; }
-  .button:active {
-    color: #ea5c5c; }
-    .button:active:after {
-      height: 101%;
-      opacity: 1; }
+  @media (min-width: 60em) {
+    .button:hover {
+      color: #ea5c5c;
+      text-decoration: none; }
+      .button:hover:after {
+        height: 85%;
+        opacity: 1; }
+    .button:active {
+      color: #ea5c5c; }
+      .button:active:after {
+        height: 104%;
+        opacity: 1; } }
   .button.red {
     color: #ea5c5c;
     border-color: #ea5c5c; }
@@ -2450,16 +2475,20 @@ p {
   text-align: center;
   position: relative; }
   .line .line-text {
-    display: inline-block; }
+    display: inline-block;
+    font-size: 1.5rem; }
     .line .line-text:before, .line .line-text:after {
       border-top: 1px solid black;
       display: block;
       height: 1px;
       content: " ";
-      width: 45%;
+      width: 40%;
       position: absolute;
       left: 0;
-      top: 0.8em; }
+      top: 1rem; }
+      @media (min-width: 60em) {
+        .line .line-text:before, .line .line-text:after {
+          width: 45%; } }
     .line .line-text:after {
       right: 0;
       left: auto; }
@@ -2477,35 +2506,64 @@ p {
       .row.faq [class*='column-'].responsive:nth-of-type(odd):not(:first-of-type) {
         margin-left: 2%; } }
 
+.day {
+  margin: auto;
+  z-index: 4;
+  font-size: 2rem;
+  color: #ea5c5c; }
+
 .schedule-container {
   position: relative;
-  height: 500px;
   margin: 25px; }
   @media (min-width: 48em) {
     .schedule-container:after {
       position: absolute;
       left: 20%;
-      top: -15px;
+      top: 0px;
       content: ' ';
       display: block;
       width: 2px;
       height: 100%;
       margin-left: -3px;
       background: #222222; } }
-  .schedule-container .day {
-    width: 100%;
-    margin: auto;
-    display: block;
-    background: white;
-    z-index: 4;
-    color: #ea5c5c; }
   .schedule-container .item {
-    height: 100px; }
+    width: 100%;
+    text-align: left; }
     .schedule-container .item .time {
       position: relative;
-      top: 6px;
       left: -30px;
-      font-size: 20px; }
+      font-size: 20px;
+      width: 30%;
+      display: inline-block;
+      margin-bottom: 0.5rem; }
     .schedule-container .item .description {
       text-align: left;
-      font-size: 25px; }
+      font-size: 25px;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+      width: 100%; }
+    @media (min-width: 60em) {
+      .schedule-container .item {
+        height: 100px; }
+        .schedule-container .item .time {
+          width: 22%;
+          text-align: right;
+          margin-bottom: 0; }
+        .schedule-container .item .description {
+          width: 73%;
+          margin-bottom: 0;
+          top: 0.5rem; } }
+
+.faq .question {
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  margin-top: 2rem; }
+
+.credits {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 3rem;
+  text-align: center;
+  margin: auto; }

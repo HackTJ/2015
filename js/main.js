@@ -57,7 +57,7 @@ jQuery(function($){
 	});
 
 	var h = $(window).height();
-
+	var credits = true;
 	function scrollHandler(){
 		var s = $(window).scrollTop();
 		for(var i=0; i<sections.length; i++){
@@ -67,11 +67,17 @@ jQuery(function($){
 			  : y;
 			sections[i].background.height(y);
 		};
-		
+		if(credits && s > h/2){
+			$('.photocreds').css('display', 'none');
+			credits = false;
+		}else if(!credits && s < h/2){
+			$('.photocreds').css('display', 'block');
+			credits = true;
+		}
+
 	}
 	scrollHandler();
 	$(window).on('scroll', function(e){
-		console.log(e);
 		window.requestAnimationFrame(scrollHandler);
 	});
 })

@@ -19,7 +19,9 @@ $green: #1a936f;
 ::-moz-selection {
   background: rgba(234, 92, 92, 0.3); /* Gecko Browsers */
 }
-
+a, a:hover, a:visited{
+    color: $red;
+}
 .cover{
     height: 100%;
     width: 100%;
@@ -40,16 +42,28 @@ $green: #1a936f;
     // opacity: 0;
 
     &.photo-1{
-        background-image: url("../img/tj.jpg");
+        background-image: url("../img/tj-small.jpg");
+        @include breakpoint(medium){ 
+            background-image: url("../img/tj-large.jpg");
+        }
     }
     &.photo-2{
-        background-image: url("../img/schedule.jpg");
+        background-image: url("../img/schedule-small.jpg");
+        @include breakpoint(medium){ 
+            background-image: url("../img/schedule-large.jpg");
+        }
     }
     &.photo-3{
-        background-image: url("../img/sponsors.jpg");
+        background-image: url("../img/sponsors-small.jpg");
+        @include breakpoint(medium){ 
+            background-image: url("../img/sponsors-large.jpg");
+        }
     }
     &.photo-4{
-        background-image: url("../img/schedule.jpg");
+        background-image: url("../img/schedule-small.jpg");
+        @include breakpoint(medium){ 
+            background-image: url("../img/schedule-large.jpg");
+        }
     }
 
     .photocreds{
@@ -91,9 +105,12 @@ $green: #1a936f;
         margin-top: 75px;
         color: white;
         z-index: 6;
-    
         .num{
             color: $red;
+        }
+        font-size: 4.5rem;
+        @include breakpoint(medium){
+            font-size: 6rem;
         }
     }
     .header-text{
@@ -104,7 +121,7 @@ $green: #1a936f;
 }
 
 .content{
-    @include box-shadow(0px -5px 20px rgba(30, 30, 30, 0.8));
+    @include box-shadow(0px 0px 25px rgba(30, 30, 30, 0.8));
     min-height: 55vh;
     background: white;
     margin: 0;
@@ -122,6 +139,7 @@ $green: #1a936f;
     color: inherit;
     background: none;
     text-transform: uppercase;
+    text-decoration: none;
     outline: none;
 
     cursor: pointer;
@@ -136,8 +154,11 @@ $green: #1a936f;
     color: #fff;
 
     overflow: hidden;
-
-    &:after{
+    min-width: 210px;
+    &:visited{
+        color: #fff;
+    }
+    &:after {
        content: '';
        position: absolute;
 
@@ -159,20 +180,24 @@ $green: #1a936f;
        transform: translateX(-50%) translateY(-50%);
     }
 
-    &:hover{
-        color: $red;
-        &:after{
-            height: 85%;
-            opacity: 1;
+    @include breakpoint(medium){ // Touchscreens don't handle hover well
+        &:hover{
+            color: $red;
+            text-decoration: none;
+            &:after{
+                height: 85%;
+                opacity: 1;
+            }
+        }
+        &:active{
+            color: $red;
+            &:after{
+                height: 104%;
+                opacity: 1;
+            }
         }
     }
-    &:active{
-        color: $red;
-        &:after{
-            height: 101%;
-            opacity: 1;
-        }
-    }
+
     &.red{
         color: $red;
         border-color: $red;
@@ -198,15 +223,19 @@ p{
     position: relative;
     .line-text {
         display: inline-block;
+        font-size: 1.5rem;
         &:before, &:after {
             border-top: 1px solid black;
             display: block;
             height: 1px;
             content: " ";
-            width: 45%;
+            width: 40%;
             position: absolute;
             left: 0;
-            top: 0.8em;
+            top: 1rem;
+            @include breakpoint(medium){
+                width: 45%;
+            }
         }
         &:after {
            right: 0;  
@@ -231,16 +260,21 @@ p{
     }
 }
 
+.day{
+    margin: auto;
+    z-index: 4;
+    font-size: 2rem;
+    color: $red;
+}
 .schedule-container{
     position: relative;
-    height: 500px;
     margin: 25px;
     
     @include breakpoint(small){ 
         &:after {
           position: absolute;
           left: 20%;
-          top: -15px;
+          top: 0px;
           content: ' ';
           display: block;
           width: 2px;
@@ -249,29 +283,56 @@ p{
           background: map-get($bg-colors, black);
         }
     }
-
-    .day{
-        width: 100%;
-        margin: auto;
-        display: block;
-        background: white;
-        z-index: 4;
-        color: $red;
-    }
     .item{
-        height: 100px;
+        width: 100%;
+        text-align: left;
         .time{
             position: relative;
-            top: 6px;
             left: -30px;
             font-size: 20px;
+            width: 30%;
+            display: inline-block;
+            margin-bottom: 0.5rem;
         }
         .description{
             // @include box-shadow(0px 1px 10px rgba(30, 30, 30, 0.8));
             text-align: left;
             font-size: 25px;
+            display: inline-block;
+            margin-bottom: 1.25rem;
+            width: 100%;
+        }
+        @include breakpoint(medium){
+            height: 100px;
+            .time{
+                width: 22%;
+                text-align: right;
+                margin-bottom: 0;
+            }
+            .description{
+                width: 73%;
+                margin-bottom: 0;
+                top: 0.5rem;
+            }
         }
     }
-
 }
 
+.faq{
+    .question{
+        margin-bottom: 0.25rem;
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+}
+
+.credits{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 3rem;
+    text-align: center;
+    margin: auto;
+    
+}
