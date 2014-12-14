@@ -23,8 +23,14 @@
             clearTimeout(id);
         };
 }());
-
+$(window).load(function(){
+	// Page done loading
+	$( "#loading" ).fadeOut( "slow", function() {
+		$(this).css('display', 'none');
+	});
+});
 jQuery(function($){
+
 	// Smooth Scrolling
 	$('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -49,14 +55,23 @@ jQuery(function($){
 		section.background = $('.'+section.header.attr('data-bg'));
 
 		section.contentMidpoint = section.content.offset().top + section.content.height() / 2;
+		section.top = section.content.offset().top
+		section.bottom = section.content.offset().top + section.content.height()
+
 		sections.push(section);
 	});
+	
+	function navIsOverSection(s){
+		for(var i=0; i<sections.length; i++)
+			if( sections[i].top < s+40 && s-40 < sections[i].bottom)
+				return true;
+		return false;
+	}
 
 	var h = $(window).height();
 	var credits = true,
-		toggleWhite = true;
+		navRed = false;
 
-	var toggleHeight = $('#top').height() - $('.toggle-nav').height() + 20;
 	function scrollHandler(){
 		var s = $(window).scrollTop();
 		for(var i=0; i<sections.length; i++){
@@ -66,6 +81,7 @@ jQuery(function($){
 			  : y;
 			sections[i].background.height(y);
 		};
+
 		if(credits && s > h/2){
 			$('.photocreds').css('display', 'none');
 			credits = false;
@@ -73,13 +89,13 @@ jQuery(function($){
 			$('.photocreds').css('display', 'block');
 			credits = true;
 		}
-		console.log($('.toggle-nav').offset().top, '>', toggleHeight, $('.toggle-nav').offset().top > toggleHeight)
-		if(toggleWhite && $('.toggle-nav').offset().top > toggleHeight){
+
+		if(!navRed && navIsOverSection(s)){
 			$('.toggle-nav').addClass('red');
-			toggleWhite = false;
-		}else if(!toggleWhite && $('.toggle-nav').offset().top < toggleHeight){
+			navRed = true;
+		}else if(navRed && !navIsOverSection(s)){
 			$('.toggle-nav').removeClass('red');
-			toggleWhite = true;
+			navRed = false;
 		}
 	}
 	scrollHandler();
