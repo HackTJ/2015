@@ -92,7 +92,7 @@ jQuery(function($){
 	var navOpen = false,
 		hasOpenedNav = false;
 	var navContainer = $('.nav-container');
-	$('.toggle-nav').click(function(e){
+	$('.toggle-nav, .nav-link').click(function(e){
 		if(navOpen){
 			navContainer.removeClass('shown');
 		}else{
@@ -103,10 +103,5 @@ jQuery(function($){
 			navContainer.addClass('shown');
 		}
 		navOpen = !navOpen;
-	});
-	$('.nav-link').click(function(e){
-		setTimeout(function(){
-			$('.toggle-nav').trigger('click');
-		}, 1250)
 	});
 });
