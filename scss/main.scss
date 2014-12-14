@@ -538,7 +538,7 @@ p{
                             color: $red;
                             &:after{
                                 height: 103%;
-                                opacity: 1;
+                                opacity: 0.85;
                             }
                         }
                     }
@@ -549,7 +549,6 @@ p{
     &.shown{
         .toggle-nav span{
             background: #fff;
-
             &:nth-child(1) {
                 top: 18px;
                 width: 0%;
