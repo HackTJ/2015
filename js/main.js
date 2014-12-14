@@ -104,4 +104,9 @@ jQuery(function($){
 		}
 		navOpen = !navOpen;
 	});
+	$('.nav-link').click(function(e){
+		setTimeout(function(){
+			$('.toggle-nav').trigger('click');
+		}, 1250)
+	});
 });
