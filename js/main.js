@@ -1,3 +1,4 @@
+// Animation Frame Shim
 (function() {
     var lastTime = 0;
     var vendors = ['ms', 'moz', 'webkit', 'o'];
@@ -24,6 +25,21 @@
 }());
 
 jQuery(function($){
+	// Smooth Scrolling
+	$('a[href*=#]:not([href=#])').click(function() {
+		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+			var target = $(this.hash);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+			if (target.length) {
+				$('html,body').animate({
+					scrollTop: target.offset().top
+				}, 1000);
+				return false;
+			}
+		}
+	});
+
+	// Section backgrounds
 	var sections = [];
 	$('.header').each(function(index, h){
 		var section = {};
@@ -37,7 +53,10 @@ jQuery(function($){
 	});
 
 	var h = $(window).height();
-	var credits = true;
+	var credits = true,
+		toggleWhite = true;
+
+	var toggleHeight = $('#top').height() - $('.toggle-nav').height() + 20;
 	function scrollHandler(){
 		var s = $(window).scrollTop();
 		for(var i=0; i<sections.length; i++){
@@ -54,10 +73,35 @@ jQuery(function($){
 			$('.photocreds').css('display', 'block');
 			credits = true;
 		}
-
+		console.log($('.toggle-nav').offset().top, '>', toggleHeight, $('.toggle-nav').offset().top > toggleHeight)
+		if(toggleWhite && $('.toggle-nav').offset().top > toggleHeight){
+			$('.toggle-nav').addClass('red');
+			toggleWhite = false;
+		}else if(!toggleWhite && $('.toggle-nav').offset().top < toggleHeight){
+			$('.toggle-nav').removeClass('red');
+			toggleWhite = true;
+		}
 	}
 	scrollHandler();
 	$(window).on('scroll', function(e){
 		window.requestAnimationFrame(scrollHandler);
 	});
-})
+
+
+	// Navigation dropdown
+	var navOpen = false,
+		hasOpenedNav = false;
+	var navContainer = $('.nav-container');
+	$('.toggle-nav').click(function(e){
+		if(navOpen){
+			navContainer.removeClass('shown');
+		}else{
+			if(!hasOpenedNav){
+				navContainer.removeClass('no-animate');
+				hasOpenedNav = true;
+			}
+			navContainer.addClass('shown');
+		}
+		navOpen = !navOpen;
+	});
+});
