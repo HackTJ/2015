@@ -484,10 +484,10 @@ p{
         z-index: 10;
         overflow: hidden;
 
-        -webkit-animation: shrink 0.7s;
-        -moz-animation: shrink 0.7s;
-        -o-animation: shrink 0.7s;
-        animation: shrink 0.7s;
+        -webkit-animation: shrink 0.4s;
+        -moz-animation: shrink 0.4s;
+        -o-animation: shrink 0.4s;
+        animation: shrink 0.4s;
 
         ul{
             padding: 0;
@@ -574,10 +574,10 @@ p{
             }
         }
         .nav{
-            -webkit-animation: expand 0.7s;
-            -moz-animation: expand 0.7s;
-            -o-animation: expand 0.7s;
-            animation: expand 0.7s;
+            -webkit-animation: expand 0.4s;
+            -moz-animation: expand 0.4s;
+            -o-animation: expand 0.4s;
+            animation: expand 0.4s;
             width: $nav-width;
             height: 100%;
             top: 0px;
