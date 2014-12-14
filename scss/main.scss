@@ -503,31 +503,33 @@ p{
                     -moz-transition: all 0.3s;
                     transition: all 0.3s; 
 
-                    &:after{
-                        content: '';
-                        position: absolute;
-                        -webkit-transition: all 0.3s;
-                        -moz-transition: all 0.3s;
-                        transition: all 0.3s; 
-                        z-index: -1;
-                        height: 0;
-                        width: 100%;
-                        top: 50%;
-                        left: 50%;
-                        background: #fff;//darken( $red, 5% );
-                        opacity: 0.5;
-
-                        -webkit-transform: translateX(-50%) translateY(-50%);
-                        -moz-transform: translateX(-50%) translateY(-50%);
-                        -ms-transform: translateX(-50%) translateY(-50%);
-                        transform: translateX(-50%) translateY(-50%);
-                    }
-                    &:hover{
-                        text-decoration: none;
-                        color: $red;
+                    @include breakpoint(medium){
                         &:after{
-                            height: 103%;
-                            opacity: 1;
+                            content: '';
+                            position: absolute;
+                            -webkit-transition: all 0.3s;
+                            -moz-transition: all 0.3s;
+                            transition: all 0.3s; 
+                            z-index: -1;
+                            height: 0;
+                            width: 100%;
+                            top: 50%;
+                            left: 50%;
+                            background: #fff;//darken( $red, 5% );
+                            opacity: 0.5;
+
+                            -webkit-transform: translateX(-50%) translateY(-50%);
+                            -moz-transform: translateX(-50%) translateY(-50%);
+                            -ms-transform: translateX(-50%) translateY(-50%);
+                            transform: translateX(-50%) translateY(-50%);
+                        }
+                        &:hover{
+                            text-decoration: none;
+                            color: $red;
+                            &:after{
+                                height: 103%;
+                                opacity: 1;
+                            }
                         }
                     }
                 }
