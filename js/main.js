@@ -29,6 +29,9 @@ $(window).load(function(){
 		$(this).css('display', 'none');
 	});
 });
+
+$('.cover').css('background-size', '100% '+$(window).height()+'px')
+
 jQuery(function($){
 
 	// Smooth Scrolling
