@@ -126,6 +126,13 @@ jQuery(function($){
 		navOpen = !navOpen;
 	});
 
+	$(document).click(function(e) {
+	    if (navOpen && !$(e.target).is('.nav-container') && !$(e.target).parents().is('.nav-container')) {
+	        navContainer.removeClass('shown');
+	        navOpen = false
+	    }
+	});
+
 
 	// Header image size
 	$( window ).resize(function() {
