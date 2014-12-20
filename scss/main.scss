@@ -99,8 +99,10 @@ a, a:hover, a:visited{
 
     &.large{
         height: 90vh;
+        min-height: 650px;
         @include breakpoint(medium){
             height: 85vh;
+            min-height: 500px;
         }
     }
     .subtitle{
@@ -112,17 +114,11 @@ a, a:hover, a:visited{
     }
     .logo{
         display: inline-block;
-        margin: auto;
-        margin-top: 75px;
+        margin: auto 30px;
+        margin-top: 50px;
         color: white;
         z-index: 6;
-        .num{
-            color: $red;
-        }
-        font-size: 4.5rem;
-        @include breakpoint(medium){
-            font-size: 6rem;
-        }
+        max-width: 80%;
     }
     .header-text{
         color: white;

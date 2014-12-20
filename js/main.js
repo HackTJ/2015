@@ -30,7 +30,14 @@ $(window).load(function(){
 	});
 });
 
-$('.cover').css('background-size', '100% '+$(window).height()+'px');
+function calculateCoverWidth(){
+	if( $(window).width() > $(window).height() ){
+		$('.cover').css('background-size', '100% '+$(window).height()+'px');
+	}else{
+		$('.cover').css('background-size', '200% '+ $(window).height() +'px');
+	}
+}
+calculateCoverWidth()
 
 jQuery(function($){
 
@@ -136,6 +143,6 @@ jQuery(function($){
 
 	// Header image size
 	$( window ).resize(function() {
-	  $('.cover').css('background-size', '100% '+$(window).height()+'px');
+	  calculateCoverWidth()
 	});
 });
