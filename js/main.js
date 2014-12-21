@@ -25,9 +25,10 @@
 }());
 $(window).load(function(){
 	// Page done loading
-	$( "#loading" ).fadeOut( "slow", function() {
-		$(this).css('display', 'none');
-	});
+	$( "#loading" ).addClass('hidden');
+	setTimeout(function(){
+		$( "#loading" ).addClass('removed');
+	}, 900)
 });
 
 function calculateCoverWidth(){

@@ -584,6 +584,26 @@ p{
         animation: none;
     }
 }
+@keyframes loading {
+  0% {
+    width: 30px;
+    height: 30px;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+  }
+}
+@-webkit-keyframes loading {
+    0% {
+      width: 30px;
+      height: 30px;
+    }
+    100% {
+      width: 100px;
+      height: 100px;
+    }
+}
 #loading{
     background: #fff;
     position: fixed;
@@ -595,5 +615,13 @@ p{
     bottom: 0;
     z-index: 100;
     opacity: 1;
-    display: none;
+    -webkit-transition: opacity 0.8s ease-in-out;
+    -moz-transition: opacity 0.8s ease-in-out;
+    transition: opacity 0.8s ease-in-out;  
+    &.hidden{
+        opacity: 0;
+    }
+    &.removed{
+        display: none;
+    }
 }
