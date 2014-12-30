@@ -339,7 +339,11 @@ p{
     text-align: center;
     img.sponsor{
         width: 300px;
+        max-width: 90%;
         display: inline;
+        @include breakpoint(medium){
+            max-width: none;
+        }
     }
 }
 .faq-head{
