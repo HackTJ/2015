@@ -1,8 +1,10 @@
 var gulp = require('gulp');
-var sass = require('gulp-ruby-sass');
-var minifyCSS = require('gulp-minify-css')
 var jade = require('gulp-jade');
+var sass = require('gulp-ruby-sass');
+
+var minifyCSS = require('gulp-minify-css')
 var minifyJS = require('gulp-uglify')
+var minifyIMG = require('gulp-imagemin')
 
 var deploy = require("gulp-gh-pages");
 var static = require('node-static');
@@ -36,6 +38,9 @@ gulp.task('js', function(){
 // Copy over static resources
 gulp.task('static', function(){
     return gulp.src('./static/**')
+        .pipe(minifyIMG({
+            optimizationLevel: 5
+        }))
         .pipe(gulp.dest('./out'));
 });
 
