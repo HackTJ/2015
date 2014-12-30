@@ -25,6 +25,14 @@ $nav-width: 250px;
 a, a:hover, a:visited{
     color: $red;
 }
+
+span.red{
+    color: $red;
+}
+span.gray{
+    color: $dark-gray;
+}
+
 .cover{
     height: 100%;
     width: 100%;

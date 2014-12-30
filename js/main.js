@@ -23,14 +23,16 @@
             clearTimeout(id);
         };
 }());
+
+// Fadeout white div when page has loaded 
 $(window).load(function(){
-	// Page done loading
 	$( "#loading" ).addClass('hidden');
 	setTimeout(function(){
 		$( "#loading" ).addClass('removed');
 	}, 900)
 });
 
+// Resize cover images for the screen
 function calculateCoverWidth(){
 	if( $(window).width() > $(window).height() ){
 		$('.cover').css('background-size', '100% '+$(window).height()+'px');
@@ -42,7 +44,7 @@ calculateCoverWidth()
 
 jQuery(function($){
 
-	// Smooth Scrolling
+	// Smooth Scrolling for #links
 	$('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
 			var target = $(this.hash);
@@ -72,18 +74,15 @@ jQuery(function($){
 		sections.push(section);
 	});
 	window.sections = sections;
-	
 	function navIsOverSection(s){
 		for(var i=0; i<sections.length; i++)
 			if( sections[i].top < s+40 && s-40 < sections[i].bottom)
 				return true;
 		return false;
 	}
-
 	var h = $(window).height();
 	var credits = true,
 		navRed = false;
-
 	function scrollHandler(){
 		var s = $(window).scrollTop();
 		for(var i=0; i<sections.length-1; i++){
@@ -133,7 +132,6 @@ jQuery(function($){
 		}
 		navOpen = !navOpen;
 	});
-
 	$(document).click(function(e) {
 	    if (navOpen && !$(e.target).is('.nav-container') && !$(e.target).parents().is('.nav-container')) {
 	        navContainer.removeClass('shown');
@@ -142,7 +140,7 @@ jQuery(function($){
 	});
 
 
-	// Header image size
+	// Listen for page resizes to fix headers
 	$( window ).resize(function() {
 	  calculateCoverWidth()
 	});

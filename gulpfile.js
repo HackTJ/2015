@@ -14,7 +14,7 @@ gulp.task('css', function () {
     return gulp.src('./scss/[!_]*.scss')
         .pipe(sass())
         .on('error', function (err) { console.log(err.message); })
-        // .pipe(minifyCSS()) // Only for production
+        .pipe(minifyCSS())
         .pipe(gulp.dest('./out/css'))
 });
 
@@ -29,6 +29,7 @@ gulp.task('html', function() {
 gulp.task('js', function(){
     return gulp.src(['./js/_*.js', './js/*.js'])
         .pipe(concat('main.js'))
+        .pipe(minifyJS())
         .pipe(gulp.dest('./out/js'))
 });
 
