@@ -33,6 +33,11 @@ span.gray{
     color: $dark-gray;
 }
 
+.disabled{
+    color: $light-gray;
+    cursor: default;
+}
+
 .cover{
     height: 100%;
     width: 100%;
@@ -129,6 +134,9 @@ span.gray{
         max-width: 80%;
     }
     .event-date{
+        color: white;
+    }
+    .registration-soon{
         color: white;
     }
     .header-text{
