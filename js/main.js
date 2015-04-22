@@ -118,8 +118,11 @@ jQuery(function($){
 
 	// Navigation dropdown
 	var navOpen = false,
+		modalOpen = false,
 		hasOpenedNav = false;
-	var navContainer = $('.nav-container');
+	var navContainer = $('.nav-container'),
+		modalContainer = $('.modal'),
+		modalBackground = $('.modal-cover');
 	$('.toggle-nav, .nav-link').click(function(e){
 		if(navOpen){
 			navContainer.removeClass('shown');
@@ -131,11 +134,49 @@ jQuery(function($){
 			navContainer.addClass('shown');
 		}
 		navOpen = !navOpen;
+
+		return false;
 	});
+	
+	$(".registration-students").click(function(e){
+		$('.modal.student').addClass('shown');
+		modalBackground.addClass('shown');
+		modalOpen = true;
+		$('.student .tito-submit').text("Purchase Ticket");
+		return false;
+	});
+	$(".registration-mentors").click(function(e){
+		$('.modal.mentor').addClass('shown');
+		modalBackground.addClass('shown');
+		modalOpen = true;
+		$('.mentor .tito-submit').text("Register");
+		return false;
+	});
+	$('.close-button').click(function(e){
+		modalContainer.removeClass('shown');
+		modalBackground.removeClass('shown');
+		modalOpen = false;
+
+		return false;
+	});
+
+	Tito.on('registration:started', function(data){
+		modalContainer.removeClass('shown');
+	});
+	Tito.on('registration:complete', function(data){
+		modalBackground.removeClass('shown');
+		modalOpen = false;
+	});
+
 	$(document).click(function(e) {
 	    if (navOpen && !$(e.target).is('.nav-container') && !$(e.target).parents().is('.nav-container')) {
 	        navContainer.removeClass('shown');
 	        navOpen = false
+	    }
+	    if (modalOpen && !$(e.target).is('.modal') && !$(e.target).parents().is('.modal')) {
+	        modalContainer.removeClass('shown');
+	        modalBackground.removeClass('shown');
+	        modalOpen = false
 	    }
 	});
 
@@ -144,4 +185,10 @@ jQuery(function($){
 	$( window ).resize(function() {
 	  calculateCoverWidth()
 	});
+
+	if(location.hash == "#mentor"){
+		console.log("opening students");
+		$('.registration-mentors').click();
+	}
+	
 });

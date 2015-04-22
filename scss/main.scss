@@ -158,11 +158,10 @@ span.gray{
     z-index: 2;
 }
 
-.button{
+.button, button{
     position: relative;
     display: inline-block;
-
-    color: inherit;
+    color: $red;
     background: none;
     text-transform: uppercase;
     text-decoration: none;
@@ -176,11 +175,16 @@ span.gray{
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 
-    border: 3px solid #fff;
-    color: #fff;
+    border: 3px solid $red;
+    
 
     overflow: hidden;
     min-width: 210px;
+
+    font-family: $base-heading-font-family;
+    font-size: 24px;
+    color: $red;
+
     &:visited{
         color: #fff;
     }
@@ -197,7 +201,7 @@ span.gray{
        width: 103%;
        top: 50%;
        left: 50%;
-       background: #fff;
+       background: $red;
        opacity: 0;
 
        -webkit-transform: translateX(-50%) translateY(-50%);
@@ -208,7 +212,7 @@ span.gray{
 
     @include breakpoint(medium){ // Touchscreens don't handle hover well
         &:hover{
-            color: $red;
+            color: #fff;
             text-decoration: none;
             &:after{
                 height: 85%;
@@ -216,7 +220,7 @@ span.gray{
             }
         }
         &:active{
-            color: $red;
+            color: #fff;
             &:after{
                 height: 104%;
                 opacity: 1;
@@ -232,6 +236,16 @@ span.gray{
         }
         &:hover, &:active{
             color: #fff;
+        }
+    }
+    &.white{
+        color: #fff;
+        border-color: #fff;
+        &:after{
+            background: #fff;
+        }
+        &:hover, &:active{
+            color: $red;
         }
     }
 }
@@ -640,11 +654,112 @@ p{
     opacity: 1;
     -webkit-transition: opacity 0.8s ease-in-out;
     -moz-transition: opacity 0.8s ease-in-out;
+    -ms-transition: opacity 0.8s ease-in-out;
+    -o-transition: opacity 0.8s ease-in-out;
     transition: opacity 0.8s ease-in-out;  
     &.hidden{
         opacity: 0;
     }
     &.removed{
         display: none;
+    }
+}
+.modal{
+    display: block;
+    position: fixed;
+    bottom: 300%;
+    right: 50%;
+    -webkit-transform: translate(50%, 50%);
+       -moz-transform: translate(50%, 50%);
+        -ms-transform: translate(50%, 50%);
+         -o-transform: translate(50%, 50%);
+            transform: translate(50%, 50%);
+    background: white;
+    padding: 10px 25px;
+    width: 500px;
+    max-width: 90%;
+    height: auto;
+    max-height: 90%;
+    overflow-y: scroll;
+    z-index: 100;
+    pointer-events: none;
+    transition: bottom 0.5s;
+    &.shown{
+        pointer-events: auto;
+        bottom: 50%;
+    }
+    .opens-at{
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        color: $red;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-family: $base-heading-font-family 
+    }
+    .close-button{
+        display: block;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        right: 25px;
+        top: 5px;
+        font-size: 50px;
+        transition: color 0.3s;
+        cursor: pointer;
+        &:hover{
+            color: $red;
+        }
+    }
+    ul{
+        margin: 0;
+        padding: 0;
+        li{
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .tito-ticket-list, .tito-badge-link{
+        visibility: hidden;
+    }
+    .tito-ticket-name-wrapper, .tito-ticket-price, .tito-ticket-quantity > span, .tito-ticket-quantity-field{
+        display: none;
+    }
+    .tito-wrapper{
+        width: 100%;
+    }
+    .tito-submit{
+        visibility: visible;
+        margin: 0;
+        margin-top: 15px;
+        text-align: center;
+        width: 100%;
+    }
+    .title{
+        width: 100%;
+        text-align: center;
+        color: $red;
+    }
+}
+.modal-cover{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $red;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    &.shown{
+        pointer-events: auto;
+        cursor: pointer;
+        opacity: 0.6;
     }
 }

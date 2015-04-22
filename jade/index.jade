@@ -13,10 +13,25 @@ html(prefix="og: http://ogp.me/ns#")
     meta(property="og:site_name" content="HackTJ")
     meta(property="og:image" content="http://hacktj.org/img/og-image.jpg")
 
+
+    //- link(rel='stylesheet', href='https://css.tito.io/v1', type='text/css')
     link(rel='stylesheet', href='css/main.css', type='text/css')
     link(rel="icon" type="image/png" href="/favicon.png")
+
   body
     #loading
+    .modal-cover
+    .modal.student
+      h3.title 1 Student Registration: $10
+      .description Open to all high school students, anywhere.
+      .icon-close.close-button
+      .opens-at Registration opens Friday April 24.
+      //- tito-widget(event="hacktj/2015" releases="u9vrsbnindq" ssl-check-disabled)
+    .modal.mentor
+      h3.title 1 Mentor Registration: Free
+      .description Mentors are professionals who help students with their hacks during the event. Technical skills are not a requirement, only some skill (design, marketing, product management) that you believe can help students. Must be 18+.
+      .icon-close.close-button
+      tito-widget(event="hacktj/2015" releases="1fp901sm-o" ssl-check-disabled)
     .nav-container.no-animate
       .toggle-nav
         span
@@ -45,10 +60,9 @@ html(prefix="og: http://ogp.me/ns#")
         .h2.light.event-date May 16-17, 2015
         //- .kilo.light.registration-soon Registration opens soon
         .buttons
-          a.button.h3.disabled(href="" target="_blank" onclick="return false;") Registration coming soon
-          //- a.button.h3(href="" target="_blank" onclick="return false;") Register
-          //- a.button.h3(href="" target="_blank" onclick="return false;") Mentor
-          //- a.button.h3(href="" target="_blank" onclick="return false;") Sponsor
+          //- .button.white.h3.disabled Registration coming soon
+          .button.white.h3.registration-students Register
+          .button.white.h3.registration-mentors Mentor
 
       //- Main section of page
       .content
@@ -100,7 +114,7 @@ html(prefix="og: http://ogp.me/ns#")
                 p.answer We'll be providing meals for most everyone at HackTJ, but if you have special concerns please <a href="mailto:hello@hacktj.org">let us know</a>.
               .column-4.responsive
                 .h3.question Is HackTJ 2.0 a sequel to the 2013 HackTJ?
-                p.answer Yes and No. HackTJ is the sequel to HackTJ and will be continued as an annual hackathon, going forward this event will be organized by TJ's <a href="http://tjclc.wordpress.com">Coding Lady Colonials</a>, not <a href="http://gopilot.org">Pilot</a>.
+                p.answer Yes and no. HackTJ is the sequel to HackTJ and will be continued as an annual hackathon, going forward this event will be organized by TJ's <a href="http://tjclc.wordpress.com">Coding Lady Colonials</a>, not <a href="http://gopilot.org">Pilot</a>.
               .column-4.responsive
                 .h3.question What if my question isn't here?
                 p.answer We want to answer it for you! Just send us a quick email at <a href="mailto:hello@hacktj.org">hello@hacktj.org</a> and we'll get back to you shortly.
@@ -163,7 +177,7 @@ html(prefix="og: http://ogp.me/ns#")
           .sponsor-container
             img.sponsor(src="img/clc.png")
           p
-            a.button.h3.red(href="" target="_blank" onclick="return false;") Want to sponsor?
+            a.button.h3.red(href="mailto:hello@hacktj.org" target="_blank") Want to sponsor?
 
       .header#contact(data-bg="photo-4")
         .mega.header-text.weight-light Contact Us
@@ -186,4 +200,5 @@ html(prefix="og: http://ogp.me/ns#")
     .cover.photo-2 
     .cover.photo-1 
       .photocreds Photo by James Woglom
+    script(src='https://js.tito.io/v1')
     script(src='js/main.js', type='text/javascript')
