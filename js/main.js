@@ -187,8 +187,9 @@ jQuery(function($){
 	});
 
 	if(location.hash == "#mentor"){
-		console.log("opening students");
-		$('.registration-mentors').click();
+		setTimeout(function(){
+			$('.registration-mentors').click();
+		}, 2000);
 	}
 	
 });
