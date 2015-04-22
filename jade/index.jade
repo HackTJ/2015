@@ -48,9 +48,16 @@ html(prefix="og: http://ogp.me/ns#")
           li
             a.h3.nav-link(href="#schedule") Schedule
           li
+            a.h3.nav-link(href="#location") Schedule
+          li
             a.h3.nav-link(href="#sponsors") Sponsors
           li
             a.h3.nav-link(href="#contact") Contact Us
+          li
+            a.nav-link.icon(href="https://twitter.com/HackTJOfficial")
+            a.nav-link.icon(href="https://facebook.com/HackTJOfficial")
+            a.nav-link.icon(href="https://instagram.com/HackTJOffical")
+
 
     .page
 
@@ -89,7 +96,7 @@ html(prefix="og: http://ogp.me/ns#")
                 p.answer HackTJ is open to any and all current high school students. If you're not a high school student but would like to attend, consider coming <a href="" onclick="return false;">as a mentor</a>.
               .column-4.responsive
                 .h3.question How much will it cost?
-                p.answer HackTJ is completely free for all students - thanks to our <a href="#sponsors">generous sponsors</a>.
+                p.answer HackTJ is just $10 for students (less than a movie ticket!) but if you're unable to afford that, please <a href="mailto:hello@hacktj.org">email us</a> and we'll help make it work for you.
             
             .row.gutters.faq
               .column-4.responsive
@@ -168,18 +175,32 @@ html(prefix="og: http://ogp.me/ns#")
                   .h3.time 5:00 PM
                   .description End of HackTJ
             
-      .header#sponsors(data-bg="photo-3")
+      .header#location(data-bg="photo-3")
+              .mega.header-text.weight-light Location
+
+        .content
+          .container
+            .row
+              .column-12
+                <iframe class="embed-map" width='100%' height='600px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/pandringa.m065e8mc/attribution,zoompan,geocoder,share.html?access_token=pk.eyJ1IjoicGFuZHJpbmdhIiwiYSI6InVNam1fUG8ifQ.kTHtHlioueaoXLCEqpNZlQ'></iframe>
+              .column-4.address  
+                .name HackTJ
+                .info TJHSST
+                .info 6560 Braddock Road
+                .info Alexandria, VA
+
+      .header#sponsors(data-bg="photo-4")
         .mega.header-text.weight-light Sponsors
 
       .content
         .container
           p.large.editable HackTJ wouldn't possible without our awesome sponsors.
           .sponsor-container
-            img.sponsor(src="img/clc.png")
+            //- img.sponsor(src="img/clc.png")
           p
             a.button.h3.red(href="mailto:hello@hacktj.org" target="_blank") Want to sponsor?
 
-      .header#contact(data-bg="photo-4")
+      .header#contact(data-bg="photo-5")
         .mega.header-text.weight-light Contact Us
 
       .content
@@ -195,6 +216,7 @@ html(prefix="og: http://ogp.me/ns#")
 
       
     //- Stuff in this div is fixed to the background
+    .cover.photo-5
     .cover.photo-4
     .cover.photo-3 
     .cover.photo-2 
