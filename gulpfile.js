@@ -38,9 +38,9 @@ gulp.task('js', function(){
 // Copy over static resources
 gulp.task('static', function(){
     return gulp.src('./static/**')
-        .pipe(minifyIMG({
-            optimizationLevel: 5
-        }))
+        // .pipe(minifyIMG({
+        //     optimizationLevel: 5
+        // }))
         .pipe(gulp.dest('./out'));
 });
 
