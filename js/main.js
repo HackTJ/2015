@@ -134,8 +134,6 @@ jQuery(function($){
 			navContainer.addClass('shown');
 		}
 		navOpen = !navOpen;
-
-		return false;
 	});
 	
 	$(".registration-students").click(function(e){

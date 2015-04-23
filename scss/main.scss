@@ -2,6 +2,7 @@
 @import "concise/concise";
 @import "icons/icons";
 @import "icons/helper";
+@import "icons/social/icons";
 
 @import url("https://fonts.googleapis.com/css?family=Quattrocento|Roboto:300");
 
@@ -551,6 +552,7 @@ p{
                 margin: 0;
                 width: 100%;
                 text-align: center;
+
                 a.nav-link{
                     color: white;
                     opacity: 1;
@@ -564,7 +566,15 @@ p{
                     -webkit-transition: all 0.3s;
                     -moz-transition: all 0.3s;
                     transition: all 0.3s; 
-
+                    &.third{
+                        width: 33%;
+                        display: inline-block;
+                        position: relative;
+                        font-size: 1.5em;
+                        &.center{
+                            width: 34%;
+                        }
+                    }
                     @include breakpoint(medium){
                         &:after{
                             content: '';
