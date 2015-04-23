@@ -24,12 +24,22 @@
         };
 }());
 
-// Fadeout white div when page has loaded 
 $(window).load(function(){
+	// Fadeout white div when page has loaded 
 	$( "#loading" ).addClass('hidden');
 	setTimeout(function(){
 		$( "#loading" ).addClass('removed');
 	}, 900)
+
+	// Start iframe loading
+	$('#mapbox-iframe').attr('src', 'https://a.tiles.mapbox.com/v4/pandringa.m065e8mc/attribution,zoompan,geocoder,share.html?access_token=pk.eyJ1IjoicGFuZHJpbmdhIiwiYSI6InVNam1fUG8ifQ.kTHtHlioueaoXLCEqpNZlQ');
+	
+	// Open mentor popup if that's what we want
+	if(location.hash == "#mentor"){
+		setTimeout(function(){
+			$('.registration-mentors').click();
+		}, 1000);
+	}
 });
 
 // Resize cover images for the screen
@@ -183,11 +193,5 @@ jQuery(function($){
 	$( window ).resize(function() {
 	  calculateCoverWidth()
 	});
-
-	if(location.hash == "#mentor"){
-		setTimeout(function(){
-			$('.registration-mentors').click();
-		}, 2000);
-	}
 	
 });
