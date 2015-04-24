@@ -23,6 +23,7 @@ html(prefix="og: http://ogp.me/ns#")
       h3.title 1 Student Registration: $10
       .description 
         p Open to all high school students, anywhere.
+        p
         p We charge only $10 to cover a small portion of our expenses, but if the fee would prevent you from attending please <a href="mailto:hello@hacktj.org">email us at hello@hacktj.org</a> and we can provide a scholarship.
       .icon-close.close-button
       .opens-at Registration opens Monday April 27.
@@ -46,9 +47,7 @@ html(prefix="og: http://ogp.me/ns#")
           li
             a.h3.nav-link(href="#faq") FAQ
           li
-            a.h3.nav-link(href="#schedule") Schedule
-          li
-            a.h3.nav-link(href="#location") Location
+            a.h3.nav-link(href="#logistics") Logistics
           li
             a.h3.nav-link(href="#sponsors") Sponsors
           li
@@ -127,8 +126,8 @@ html(prefix="og: http://ogp.me/ns#")
                 p.answer We want to answer it for you! Just send us a quick email at <a href="mailto:hello@hacktj.org">hello@hacktj.org</a> and we'll get back to you shortly.
 
 
-      .header#schedule(data-bg="photo-2")
-        .mega.header-text.weight-light Schedule
+      .header#logistics(data-bg="photo-2")
+        .mega.header-text.weight-light Logistics
 
       .content
         .container
@@ -174,22 +173,17 @@ html(prefix="og: http://ogp.me/ns#")
                 .item
                   .h3.time 5:30 PM
                   .description End of HackTJ
-            
-      .header#location(data-bg="photo-3")
-              .mega.header-text.weight-light Location
+          br
+          .row
+            .column-12
+              <iframe id="mapbox-iframe" class="embed-map" width='100%' height='600px' frameBorder='0'></iframe>
+            .column-4.address  
+              .name HackTJ
+              .info TJHSST
+              .info 6560 Braddock Road
+              .info Alexandria, VA
 
-        .content
-          .container
-            .row
-              .column-12
-                <iframe id="mapbox-iframe" class="embed-map" width='100%' height='600px' frameBorder='0'></iframe>
-              .column-4.address  
-                .name HackTJ
-                .info TJHSST
-                .info 6560 Braddock Road
-                .info Alexandria, VA
-
-      .header#sponsors(data-bg="photo-4")
+      .header#sponsors(data-bg="photo-3")
         .mega.header-text.weight-light Sponsors
 
       .content
@@ -200,7 +194,7 @@ html(prefix="og: http://ogp.me/ns#")
           p
             a.button.h3.red(href="mailto:hello@hacktj.org" target="_blank") Want to sponsor?
 
-      .header#contact(data-bg="photo-5")
+      .header#contact(data-bg="photo-4")
         .mega.header-text.weight-light Contact Us
 
       .content
@@ -212,14 +206,13 @@ html(prefix="og: http://ogp.me/ns#")
           p.credits
             | HackTJ is organized by TJ's 
             a(href="http://tjclc.wordpress.com") Coding Lady Colonials
-            | . &copy; 2014-2015
+            | . &copy; 2014-2015. 
+          p.credits Cover photo credit: James Woglom
 
       
     //- Stuff in this div is fixed to the background
-    .cover.photo-5
     .cover.photo-4
     .cover.photo-3 
     .cover.photo-2 
     .cover.photo-1 
-      .photocreds Photo by James Woglom
     script(src='js/main.js', type='text/javascript')

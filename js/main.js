@@ -91,8 +91,7 @@ jQuery(function($){
 		return false;
 	}
 	var h = $(window).height();
-	var credits = true,
-		navRed = false;
+	var navRed = false;
 	function scrollHandler(){
 		var s = $(window).scrollTop();
 		for(var i=0; i<sections.length-1; i++){
@@ -103,14 +102,6 @@ jQuery(function($){
 
 			sections[i].background.height(y);
 		};
-
-		if(credits && s > h/2){
-			$('.photocreds').css('display', 'none');
-			credits = false;
-		}else if(!credits && s < h/2){
-			$('.photocreds').css('display', 'block');
-			credits = true;
-		}
 
 		if(!navRed && navIsOverSection(s)){
 			$('.toggle-nav').addClass('red');
@@ -191,7 +182,7 @@ jQuery(function($){
 
 	// Listen for page resizes to fix headers
 	$( window ).resize(function() {
-	  calculateCoverWidth()
+	  calculateCoverWidth();
 	});
 	
 });

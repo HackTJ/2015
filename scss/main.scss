@@ -79,18 +79,12 @@ span.gray{
         }
     }
     &.photo-3{
-        background-image: url("../img/map.png");
-        @include breakpoint(medium){ 
-            background-image: url("../img/map.png");
-        }
-    }
-    &.photo-4{
         background-image: url("../img/sponsors-small.jpg");
         @include breakpoint(medium){ 
             background-image: url("../img/sponsors-large.jpg");
         }
     }
-    &.photo-5{
+    &.photo-4{
         background-image: url("../img/schedule-small.jpg");
         @include breakpoint(medium){ 
             background-image: url("../img/schedule-large.jpg");
