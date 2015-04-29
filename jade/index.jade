@@ -20,13 +20,13 @@ html(prefix="og: http://ogp.me/ns#")
     #loading
     .modal-cover
     .modal.student
-      h3.title 1 Student Registration: $10
-      .description 
+      h3.title#student-title 1 Student Registration : $10
+      .description
         p Open to all high school students, anywhere.
-        p
-        p We charge only $10 to cover a small portion of our expenses, but if the fee would prevent you from attending please <a href="mailto:hello@hacktj.org">email us at hello@hacktj.org</a> and we can provide a scholarship.
+        br
+        p#charge-info We charge only $10 to cover a small portion of our expenses, but if the fee would prevent you from attending please <a href="mailto:hello@hacktj.org">email us at hello@hacktj.org</a> and we can provide a scholarship.
       .icon-close.close-button
-      tito-widget(event="hacktj/2015" releases="u9vrsbnindq")
+      tito-widget#student-widget(event="hacktj/2015" releases="u9vrsbnindq")
     .modal.mentor
       h3.title 1 Mentor Registration: Free
       .description Mentors are professionals who help students with their hacks during the event. Technical skills are not a requirement, only some skill (design, marketing, product management) that you believe can help students. Must be 18+.

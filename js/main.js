@@ -45,6 +45,23 @@ $(window).load(function(){
 			$('.registration-students').click();
 		}, 1000);
 	}
+
+	var queryArgs = {}
+	location.search.substr(1).split("&").forEach(function(item) {
+		queryArgs[item.split("=")[0]] = item.split("=")[1]
+	});
+	if(queryArgs["discount_code"]){
+		console.log("Applying discount: ", queryArgs["discount_code"]);
+		$('#tito-tito-hacktj-2015-1-discount-code-field').attr('value', queryArgs["discount_code"]);
+		$('#tito-tito-hacktj-2015-1-discount-apply-button').click();
+
+		if(queryArgs["discount_code"].indexOf("payInCash") == 0){
+			$('#student-title').text('1 Rgistration: Pay in Cash');
+			$('#charge-info').html('To complete your registration you MUST bring $10 in cash to Ms. Galanos within a week. She can be found in T17, T19, or T20 during most class periods and breaks. If you\'re not a TJ student, please <a href="mailto:hello@hacktj.org">email us</a> and we can help you.');
+		}else{
+			$('#student-title').text('Discounted Registration: FREE');
+		}
+	}
 });
 
 // Resize cover images for the screen
