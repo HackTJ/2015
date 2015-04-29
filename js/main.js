@@ -46,10 +46,11 @@ $(window).load(function(){
 		}, 1000);
 	}
 
-	var queryArgs = {}
+	window.queryArgs = {}
 	location.search.substr(1).split("&").forEach(function(item) {
 		queryArgs[item.split("=")[0]] = item.split("=")[1]
 	});
+
 	if(queryArgs["discount_code"]){
 		if(queryArgs["discount_code"].indexOf("payInCash") == 0){
 			queryArgs["discount_code"] = "payInCash";
@@ -167,6 +168,12 @@ jQuery(function($){
 		modalBackground.addClass('shown');
 		modalOpen = true;
 		$('.student .tito-submit').text("Purchase Ticket");
+
+		if(queryArgs["discount_code"]){
+			$('#tito-tito-hacktj-2015-1-discount-code-field').attr('value', queryArgs["discount_code"]);
+			$('#tito-tito-hacktj-2015-1-discount-apply-button').click();
+		}
+
 		return false;
 	});
 	$(".registration-mentors").click(function(e){
