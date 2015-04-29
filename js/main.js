@@ -59,12 +59,6 @@ $(window).load(function(){
 		}else{
 			$('#student-title').text('Discounted Registration: FREE');
 		}
-
-		console.log("Applying discount: ", queryArgs["discount_code"]);
-		$('#tito-tito-hacktj-2015-1-discount-code-field').attr('value', queryArgs["discount_code"]);
-		setTimeout(function(){
-			$('#tito-tito-hacktj-2015-1-discount-apply-button').click();
-		}, 500);
 	}
 });
 
