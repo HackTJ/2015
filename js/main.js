@@ -40,6 +40,11 @@ $(window).load(function(){
 			$('.registration-mentors').click();
 		}, 1000);
 	}
+	if(location.hash == "#student" || location.hash == "#register"){
+		setTimeout(function(){
+			$('.registration-students').click();
+		}, 1000);
+	}
 });
 
 // Resize cover images for the screen
