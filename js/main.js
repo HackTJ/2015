@@ -52,7 +52,7 @@ $(window).load(function(){
 	});
 
 	if(queryArgs["discount_code"]){
-		if(queryArgs["discount_code"].indexOf("payInCash") == 0){
+		if(queryArgs["discount_code"].toLowerCase().indexOf("payincash") == 0){
 			queryArgs["discount_code"] = "payInCash";
 			$('#student-title').text('1 Registration: Pay in Cash');
 			$('#charge-info').html('To complete your registration you MUST bring $10 in cash to Ms. Galanos within a week. She can be found in T17, T19, or T20 during most class periods and breaks. If you\'re not a TJ student, please <a href="mailto:hello@hacktj.org">email us</a> and we can help you.');
