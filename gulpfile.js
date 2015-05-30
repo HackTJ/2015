@@ -48,7 +48,10 @@ gulp.task('static', function(){
 gulp.task('default', ['css', 'html', 'js', 'static'])
 
 gulp.task('deploy', ['css', 'html', 'static', 'js'], function () {
-    var remote = "https://github.com/pandringa/HackTJ.git";
+    var options = {
+    	remoteUrl: "https://github.com/HackTJ/hacktj.github.io.git",
+    	branch: "master"
+    }
 
     return gulp.src("./out/**/*")
         .pipe( deploy( remote ) );
