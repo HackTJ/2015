@@ -50,11 +50,11 @@ gulp.task('default', ['css', 'html', 'js', 'static'])
 gulp.task('deploy', ['css', 'html', 'static', 'js'], function () {
     var options = {
     	remoteUrl: "https://github.com/HackTJ/hacktj.github.io.git",
-    	branch: "master"
+    	branch: "master",
     }
 
     return gulp.src("./out/**/*")
-        .pipe( deploy( remote ) );
+        .pipe( deploy( options ) );
 });
 
 gulp.task('watch', ['default'], function() {

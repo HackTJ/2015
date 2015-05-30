@@ -21,20 +21,20 @@ html(prefix="og: http://ogp.me/ns#")
   body
     #loading
     .modal-cover
-    .modal.student
-      h3.title#student-title 1 Student Registration : $10
-      .description
-        p Open to all high school students, anywhere.
-        br
-        p#charge-info We charge only $10 to cover a small portion of our expenses, but if the fee would prevent you from attending please <a href="mailto:hello@hacktj.org">email us at hello@hacktj.org</a> and we can provide a scholarship.
-      .icon-close.close-button
-      //- tito-widget#student-widget(event="hacktj/2015" releases="u9vrsbnindq")
-      .opens-at Registration is now closed.
-    .modal.mentor
-      h3.title 1 Mentor Registration: Free
-      .description Mentors are professionals who help students with their hacks during the event. Technical skills are not a requirement, only some skill (design, marketing, product management) that you believe can help students. Must be 18+.
-      .icon-close.close-button
-      tito-widget(event="hacktj/2015" releases="1fp901sm-o")
+    //- .modal.student
+    //-   h3.title#student-title 1 Student Registration : $10
+    //-   .description
+    //-     p Open to all high school students, anywhere.
+    //-     br
+    //-     p#charge-info We charge only $10 to cover a small portion of our expenses, but if the fee would prevent you from attending please <a href="mailto:hello@hacktj.org">email us at hello@hacktj.org</a> and we can provide a scholarship.
+    //-   .icon-close.close-button
+    //-   //- tito-widget#student-widget(event="hacktj/2015" releases="u9vrsbnindq")
+    //-   .opens-at Registration is now closed.
+    //- .modal.mentor
+    //-   h3.title 1 Mentor Registration: Free
+    //-   .description Mentors are professionals who help students with their hacks during the event. Technical skills are not a requirement, only some skill (design, marketing, product management) that you believe can help students. Must be 18+.
+    //-   .icon-close.close-button
+    //-   tito-widget(event="hacktj/2015" releases="1fp901sm-o")
     .nav-container.no-animate
       .toggle-nav
         span
@@ -68,11 +68,11 @@ html(prefix="og: http://ogp.me/ns#")
         .h1.light.event-date May 16-17, 2015
         //- .kilo.light.registration-soon Registration opens soon
         br
-        .h2.light.register-as Register as a...
+        //- .h2.light.register-as Register as a...
         .buttons
-          //- .button.white.h3.disabled Registration coming soon
-          .button.white.h3.registration-students Student
-          .button.white.h3.registration-mentors Mentor
+          .button.white.h3.disabled Registration is closed
+          //- .button.white.h3.registration-students Student
+          //- .button.white.h3.registration-mentors Mentor
 
       //- Main section of page
       .content
