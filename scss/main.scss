@@ -73,7 +73,7 @@ span.gray{
     }
     &.photo-2{
         // https://www.facebook.com/HackTJOfficial/photos/a.831228620289662.1073741829.815704928508698/831570480255476/?type=3&theater
-        background: url("../img/workshop-large.jpg");
+        background: url("../img/workshop-small.jpg");
         @include breakpoint(medium){ 
             background: url("../img/workshop-large.jpg");
         }
@@ -81,7 +81,7 @@ span.gray{
     &.photo-3{
         // https://www.facebook.com/HackTJOfficial/photos/a.831228620289662.1073741829.815704928508698/831580033587854/?type=3&theater
         // https://www.facebook.com/HackTJOfficial/photos/a.831228620289662.1073741829.815704928508698/831579883587869/?type=3&theater
-        background: url("../img/presenting-large.jpg");
+        background: url("../img/presenting-small.jpg");
         @include breakpoint(medium){ 
             background: url("../img/presenting-large.jpg");
         }
