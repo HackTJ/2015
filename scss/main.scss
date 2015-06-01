@@ -374,6 +374,25 @@ p{
     text-align: left;
     margin-bottom: 25px;
 }
+.social-icons{
+    color: $red;
+    font-size: 40px;
+}
+a.social{
+    display: inline-block;
+    font-size: 35px;
+    margin: 20px;
+    text-align: center;
+    vertical-align: middle;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    z-index: 4;
+    &:hover{
+        text-decoration: none;
+        color: #ff7272;
+    }
+}
 .day{
     margin: auto;
     z-index: 4;

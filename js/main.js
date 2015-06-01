@@ -102,13 +102,13 @@ jQuery(function($){
 	},{
 		value: 21,
 		label: "Somewhat Successful",
-		color: "#AA5858",
-		highlight: "#BA6868"
+		color: "#c8cbd1",
+		highlight: "#d8dbe1"
 	},{
 		value: 4,
 		label: "Not Very Successful",
-		color: "#3B3A3A",
-		highlight: "#4B4A4A"
+		color: "#6f8483",
+		highlight: "#7f9493"
 	}];
 	var returnData = [{
 		value: 95,
@@ -118,8 +118,8 @@ jQuery(function($){
 	},{
 		value: 5,
 		label: "Probably not",
-		color: "#3B3A3A",
-		highlight: "#4B4A4A"
+		color: "#6f8483",
+		highlight: "#7f9493"
 	}];
 	var recommendData = [{
 		value: 89,
@@ -129,8 +129,8 @@ jQuery(function($){
 	},{
 		value: 11,
 		label: "Probably not",
-		color: "#3B3A3A",
-		highlight: "#4B4A4A"
+		color: "#6f8483",
+		highlight: "#7f9493"
 	}];
 	
 	var doughnutOptions = {
