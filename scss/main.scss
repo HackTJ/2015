@@ -63,28 +63,40 @@ span.gray{
     background-position: top center;
     transition: height 0s;
 
+    
+
     &.photo-1{
-        background-image: url("../img/tj-small.jpg");
+        background: url("../img/tj-small.jpg");
         @include breakpoint(medium){ 
-            background-image: url("../img/tj-large.jpg");
+            background: url("../img/tj-large.jpg");
         }
     }
     &.photo-2{
-        background-image: url("../img/schedule-small.jpg");
+        // https://www.facebook.com/HackTJOfficial/photos/a.831228620289662.1073741829.815704928508698/831570480255476/?type=3&theater
+        background: url("../img/workshop-large.jpg");
         @include breakpoint(medium){ 
-            background-image: url("../img/schedule-large.jpg");
+            background: url("../img/workshop-large.jpg");
         }
     }
     &.photo-3{
-        background-image: url("../img/sponsors-small.jpg");
+        // https://www.facebook.com/HackTJOfficial/photos/a.831228620289662.1073741829.815704928508698/831580033587854/?type=3&theater
+        // https://www.facebook.com/HackTJOfficial/photos/a.831228620289662.1073741829.815704928508698/831579883587869/?type=3&theater
+        background: url("../img/presenting-large.jpg");
         @include breakpoint(medium){ 
-            background-image: url("../img/sponsors-large.jpg");
+            background: url("../img/presenting-large.jpg");
         }
     }
     &.photo-4{
-        background-image: url("../img/schedule-small.jpg");
+        background: url("../img/sponsors-small.jpg");
         @include breakpoint(medium){ 
-            background-image: url("../img/schedule-large.jpg");
+            background: url("../img/sponsors-large.jpg");
+        }
+    }
+    &.photo-5{
+        // https://www.facebook.com/HackTJOfficial/photos/a.831228620289662.1073741829.815704928508698/831228960289628/?type=3&theater
+        background: url("../img/registration-large.jpg");
+        @include breakpoint(medium){ 
+            background: url("../img/registration-large.jpg");
         }
     }
 
@@ -120,10 +132,10 @@ span.gray{
 
 
     &.large{
-        height: 94vh;
+        height: 90vh;
         min-height: 650px;
         @include breakpoint(medium){
-            height: 85vh;
+            height: 75vh;
             min-height: 500px;
         }
     }
@@ -319,7 +331,49 @@ p{
         }
     }
 }
-
+.survey-question{
+    width: 100%;
+    text-align: center;
+}
+.big-number{
+    display: inline;
+    font-weight: 100;
+    font-size: 60px;
+    font-family: $base-heading-font-family;
+    color: $red;
+    margin-right: 10px;
+    &.bigger{
+        font-size: 80px;
+    }
+}
+.stat{
+    display: inline;
+    font-weight: 300;
+    font-size: 25px;
+    &.bigger{
+        font-size: 45px;
+    }
+}
+.pie-chart{
+    width: 100%;
+    height: auto;
+}
+.narrow{
+    @include breakpoint(large){
+        width: 70%;
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+}
+.winner{
+    display: block;
+    font-size: 30px;
+    font-family: $base-heading-font-family;
+    font-weight: 300;
+    text-align: left;
+    margin-bottom: 25px;
+}
 .day{
     margin: auto;
     z-index: 4;

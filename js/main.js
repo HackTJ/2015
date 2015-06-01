@@ -45,12 +45,10 @@ $(window).load(function(){
 			$('.registration-students').click();
 		}, 1000);
 	}
-
 	window.queryArgs = {}
 	location.search.substr(1).split("&").forEach(function(item) {
 		queryArgs[item.split("=")[0]] = item.split("=")[1]
 	});
-
 	if(queryArgs["discount_code"]){
 		if(queryArgs["discount_code"].toLowerCase().indexOf("payincash") == 0){
 			queryArgs["discount_code"] = "payInCash";
@@ -87,6 +85,72 @@ jQuery(function($){
 			}
 		}
 	});
+
+	// Pie Charts
+	Chart.defaults.global.responsive = true;
+	Chart.defaults.global.tooltipTitleFontFamily = "'Roboto', 'Helvetica Neue', 'Helvetica', sans-serif";
+	Chart.defaults.global.tooltipFontFamily = "'Roboto', 'Helvetica Neue', 'Helvetica', sans-serif";
+	Chart.defaults.global.tooltipFontFamily = "'Roboto', 'Helvetica Neue', 'Helvetica', sans-serif";
+	Chart.defaults.global.scaleFontFamily = "'Roboto', 'Helvetica Neue', 'Helvetica', sans-serif";
+	Chart.defaults.global.maintainAspectRatio = false;
+	Chart.defaults.global.tooltipTemplate = "<%if (label){%><%=label%>: <%}%><%= value %>%";
+	var successData = [{
+		value: 74,
+		label: "Very Successful",
+		color: "#EA5C5C",
+		highlight: "#FA6C6C"
+	},{
+		value: 21,
+		label: "Somewhat Successful",
+		color: "#AA5858",
+		highlight: "#BA6868"
+	},{
+		value: 4,
+		label: "Not Very Successful",
+		color: "#3B3A3A",
+		highlight: "#4B4A4A"
+	}];
+	var returnData = [{
+		value: 95,
+		label: "Definitely",
+		color: "#EA5C5C",
+		highlight: "#FA6C6C"
+	},{
+		value: 5,
+		label: "Probably not",
+		color: "#3B3A3A",
+		highlight: "#4B4A4A"
+	}];
+	var recommendData = [{
+		value: 89,
+		label: "Definitely",
+		color: "#EA5C5C",
+		highlight: "#FA6C6C"
+	},{
+		value: 11,
+		label: "Probably not",
+		color: "#3B3A3A",
+		highlight: "#4B4A4A"
+	}];
+	
+	var doughnutOptions = {
+		animationSteps: 40,
+		animationEasing: "easeInOut",
+		percentageInnerCutout: 60
+	}
+
+	var chartsCreated = false;
+	function createCharts(){
+		chartsCreated = true;
+		var successChart = new Chart($('#successChart')[0].getContext("2d")).Doughnut(successData, doughnutOptions);
+		setTimeout(function(){
+			var returnChart = new Chart($('#returnChart')[0].getContext("2d")).Doughnut(returnData, doughnutOptions);
+		}, 400);
+		setTimeout(function(){
+			var recommendChart = new Chart($('#recommendChart')[0].getContext("2d")).Doughnut(recommendData, doughnutOptions);
+		}, 800);
+	}
+
 
 	// Section backgrounds
 	var sections = [];
@@ -129,6 +193,11 @@ jQuery(function($){
 		}else if(navRed && !navIsOverSection(s)){
 			$('.toggle-nav').removeClass('red');
 			navRed = false;
+		}
+
+		if(!chartsCreated && (s+h/2) > $("#numbers").offset().top){
+			console.log("draw charts!");
+			createCharts();
 		}
 	}
 	scrollHandler();
