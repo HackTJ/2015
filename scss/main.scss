@@ -132,12 +132,8 @@ span.gray{
 
 
     &.large{
-        height: 90vh;
-        min-height: 650px;
-        @include breakpoint(medium){
-            height: 75vh;
-            min-height: 500px;
-        }
+        height: 75vh;
+        min-height: 500px;
     }
     .subtitle{
         color: #fff;
@@ -149,7 +145,7 @@ span.gray{
     .logo{
         display: inline-block;
         margin: auto 30px;
-        margin-top: 50px;
+        margin-top: 70px;
         color: white;
         z-index: 6;
         max-width: 80%;

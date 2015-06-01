@@ -175,6 +175,7 @@ jQuery(function($){
 		return false;
 	}
 	var h = $(window).height();
+	var chartTop = $("#charts").offset().top;
 	var navRed = false;
 	function scrollHandler(){
 		var s = $(window).scrollTop();
@@ -195,7 +196,7 @@ jQuery(function($){
 			navRed = false;
 		}
 
-		if(!chartsCreated && (s+h/2) > $("#numbers").offset().top){
+		if(!chartsCreated && (s+2*h/3) > chartTop){
 			console.log("draw charts!");
 			createCharts();
 		}
