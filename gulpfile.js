@@ -54,7 +54,8 @@ gulp.task('deploy', ['css', 'html', 'static', 'js'], function () {
     }
 
     return gulp.src("./out/**/*")
-        .pipe( deploy( options ) );
+        .pipe( deploy( options ) )
+        .pipe( deploy() );
 });
 
 gulp.task('watch', ['default'], function() {
