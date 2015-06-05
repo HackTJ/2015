@@ -4,7 +4,7 @@ var sass = require('gulp-ruby-sass');
 
 var minifyCSS = require('gulp-minify-css')
 var minifyJS = require('gulp-uglify')
-var minifyIMG = require('gulp-imagemin')
+// var minifyIMG = require('gulp-imagemin')
 
 var deploy = require("gulp-gh-pages");
 var static = require('node-static');
