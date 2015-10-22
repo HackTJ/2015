@@ -136,8 +136,8 @@ deploy.homepage = function() {
 // Deploy to both targets
 deploy.all = function(cb){
 	when.all([
-		deploy.year,
-	 	deploy.homepage
+		deploy.event(),
+	 	deploy.homepage()
 	]).then(function(){
 		return cb();
 	})
