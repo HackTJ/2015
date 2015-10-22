@@ -1,4 +1,4 @@
-// Animation Frame Shim
+// requestAnimationFrame Shim
 (function() {
     var lastTime = 0;
     var vendors = ['ms', 'moz', 'webkit', 'o'];

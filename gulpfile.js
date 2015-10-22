@@ -1,76 +1,91 @@
 /* Config settings - Update this when you clone the repo */
-var repo = {
+var eventRepo = {
 	remoteUrl: "https://github.com/HackTJ/2015.git",
 	branch: "gh-pages",
+	cacheDir: '.page'
 }
 var homepageRepo = {
 	remoteUrl: "https://github.com/HackTJ/hacktj.github.io.git",
 	branch: "master",
+	cacheDir: '.homepage'
+
 }
 /* ----------------------------------------------------- */
 
 var concat = require('gulp-concat');
-var deploy = require("gulp-gh-pages");
+var githubPages = require("gulp-gh-pages");
 var gulp = require('gulp');
 var http = require('node-static');
 var jade = require('gulp-jade');
 var minifyIMG = require('gulp-imagemin')
 var minifyJS = require('gulp-uglify')
-var rm = require('gulp-rm');
+var rmdir = require('rimraf');
 var sass = require('gulp-sass');
 var when = require('when');
-
+var debug = require('gulp-debug');
 
 /**** Compiler tasks ****/
 var compiler = {};
 
 // Clean /out directory
-compiler.clean = function() {
-	console.log('Cleaning /out directory...');
-	return gulp.src( './out/**/*', { read: false })
-    .pipe( rm() )
+compiler.clean = function(cb) {
+	rmdir('./out/**/*', function(){
+		console.log('done cleaning')
+		return cb();
+	});
 }
 
 // Compile HTML
 compiler.html = function() {
 	console.log('Compiling HTML...');
-    return gulp.src('./jade/[!_]*.jade')
+	var deferred = when.defer();
+    gulp.src('./jade/[!_]*.jade')
         .pipe(jade())
         .pipe(gulp.dest('./out'))
+        .on('end', function(){
+        	deferred.resolve();
+        });
+    return deferred.promise;
 }
 
 // Compile CSS
 compiler.css = function() {
 	console.log('Compiling CSS...');
-    return gulp.src('./scss/[!_]*.scss')
+	var deferred = when.defer()
+    gulp.src('./scss/[!_]*.scss')
         .pipe(sass({outputStyle: 'compressed'}))
         .on('error', function (err) { console.log(err.message); })
         .pipe(gulp.dest('./out/css'))
+        .on('end', function(){
+        	deferred.resolve();
+        });
+    return deferred.promise;
 }
 
 // Compile JS
 compiler.js = function() {
 	console.log('Compiling JS...');
-    return gulp.src(['./js/_*.js', './js/*.js'])
+	var deferred = when.defer();
+    gulp.src(['./js/_*.js', './js/*.js'])
         .pipe(concat('main.js'))
         .pipe(minifyJS())
         .pipe(gulp.dest('./out/js'))
+        .on('end', function(){
+        	deferred.resolve();
+        });
+    return deferred.promise;
 }
 
 // Compile static resources
 compiler.static = function(){
 	console.log('Compiling static...');
-    return gulp.src('./static/**')
-        .pipe(gulp.dest('./out'));
-}
-
-compiler.static_compression = function(){
-	console.log('Compressing static...')
-    return gulp.src('./static/**')
-        .pipe(minifyIMG({
-            optimizationLevel: 5
-        }))
-        .pipe(gulp.dest('./out'));
+    var deferred = when.defer();
+    gulp.src('./static/**')
+        .pipe(gulp.dest('./out'))
+        .on('end', function(){
+        	deferred.resolve();
+        });
+    return deferred.promise;
 }
 
 // Add gulp tasks for each compiler
@@ -79,53 +94,57 @@ Object.keys(compiler).forEach(function(name){
 })
 
 // Clear directory and compile all
-var compileAll = function(){
-	return when.all([
-		compiler.html(),
-		compiler.css(),
-		compiler.js(),
-		compiler.static_compression()
-	])
-}
-gulp.task('compile', ['clean'], compileAll)
-
-var compileDev = function(cb){
-	return when.all([
+var compileAll = function(cb){
+	when.all([
 		compiler.html(),
 		compiler.css(),
 		compiler.js(),
 		compiler.static()
-	])
+	]).then(function(stuff){
+		console.log("Compiled all files.")
+		return cb();
+	});
 }
-gulp.task('compile-dev', ['clean'], compileDev)
+gulp.task('compile', ['clean'], compileAll)
 
 
 /**** Deploy tasks ****/
 var deploy = {}
 
 // Deploy to hacktj.org/year
-deploy.year = function(){
-	console.log("Deploying to event page")
-	return gulp.src("./out/**/*")
-        .pipe( deploy( repo ) )
+deploy.event = function(){
+	var deferred = when.defer();
+	gulp.src("./out/**/*")
+		.pipe( debug() )
+        .pipe( githubPages( eventRepo ) )
+        .on('end', function(){
+        	deferred.resolve();
+        });
+    return deferred.promise;
 }
 // Deploy to hacktj.org
 deploy.homepage = function() {
-	console.log("Deploying to homepage")
+	var deferred = when.defer();
     return gulp.src("./out/**/*")
-        .pipe( deploy( homepageRepo ) )
+        .pipe( githubPages( homepageRepo ) )
+       	.on('end', function(){
+        	deferred.resolve();
+        });
+    return deferred.promise;
 }
 
 // Deploy to both targets
 deploy.all = function(cb){
-	return when.all([
+	when.all([
 		deploy.year,
 	 	deploy.homepage
-	])
+	]).then(function(){
+		return cb();
+	})
 }
 
 // Add gulp tasks for each deploy target
-Object.keys(compiler).forEach(function(target){
+Object.keys(deploy).forEach(function(target){
 	gulp.task('deploy-'+target, ['compile'], deploy[target]);
 });
 
@@ -147,4 +166,4 @@ gulp.task('watch', ['default'], function() {
     console.log("Server listening on port %s", port)
 });
 
-gulp.task('default', ['compile-dev'])
+gulp.task('default', ['compile'])
