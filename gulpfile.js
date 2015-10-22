@@ -58,17 +58,18 @@ gulp.task('static-images', function(){
         .pipe(gulp.dest('./out'));
 });
 
+// Deploy tasks
 gulp.task('deploy', ['css', 'html', 'static-images', 'js'], function () {
     return gulp.src("./out/**/*")
         .pipe( deploy( repo ) )
         .pipe( deploy() );
 });
-
 gulp.task('deploy-homepage', ['css', 'html', 'static-images', 'js'], function () {
     return gulp.src("./out/**/*")
         .pipe( deploy( homepageRepo ) )
         .pipe( deploy() );
 });
+gulp.task('deploy-all', ['deploy', 'deploy-homepage']);
 
 gulp.task('watch', ['default'], function() {
     port = (process.argv.length > 4 && process.argv[3] == '--port') ? parseInt(process.argv[4]) : 8000;
