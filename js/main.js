@@ -134,8 +134,8 @@ jQuery(function($){
 	}];
 	
 	var doughnutOptions = {
-		animationSteps: 40,
-		animationEasing: "easeInOut",
+		animationSteps: 50,
+		animationEasing: "easeInOutSine",
 		percentageInnerCutout: 60
 	}
 
@@ -145,10 +145,10 @@ jQuery(function($){
 		var successChart = new Chart($('#successChart')[0].getContext("2d")).Doughnut(successData, doughnutOptions);
 		setTimeout(function(){
 			var returnChart = new Chart($('#returnChart')[0].getContext("2d")).Doughnut(returnData, doughnutOptions);
-		}, 400);
+		}, 500);
 		setTimeout(function(){
 			var recommendChart = new Chart($('#recommendChart')[0].getContext("2d")).Doughnut(recommendData, doughnutOptions);
-		}, 800);
+		}, 1000);
 	}
 
 
